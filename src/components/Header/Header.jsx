@@ -3,7 +3,7 @@ import pizza from '../../static/pizza-logo.svg'
 
 const Header = () => {
     return (
-        <div className="wrapper">
+        
             <div class="header">
                 <div class="container">
                     <div class="header__logo">
@@ -51,7 +51,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        
     )
 }
 
