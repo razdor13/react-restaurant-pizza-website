@@ -37,7 +37,7 @@ const PizzaBlock = () => {
         {
             "id": 1,
             "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg",
-            "title": "Сырная",
+            "title": "Сирна піцца",
             "types": [0],
             "sizes": [26, 40],
             "price": 245,
@@ -147,7 +147,7 @@ const PizzaBlock = () => {
                     </ul>
                 </div>
                 <div className="pizza-block__bottom">
-                    <div className="pizza-block__price">от {pizza.price} ₽</div>
+                    <div className="pizza-block__price">от {pizza.price} $</div>
                     <div className="button button--outline button--add">
                         <span>Добавить</span>
                         <i>2</i>

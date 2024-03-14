@@ -5,6 +5,7 @@ import Header from '../Header/Header.jsx';
 import Categories from '../Categories/Categories.jsx';
 import Sort from '../Sort/Sort.jsx';
 import PizzaBlock from '../PizzaBlock/PizzaBlock.jsx';
+import Promo from '../Promo/Promo.jsx';
 const App = () => {
 
     const { loading, error, getHelloWorld } = usePizzaService();
@@ -25,6 +26,7 @@ const App = () => {
             <Header />
             <div className='content'>
                 <div className="container">
+                    <Promo/>
                     <div className='content__top'>
                         <Categories/>
                         <Sort/>
