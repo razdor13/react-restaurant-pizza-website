@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+$primary-color: rgb(255, 145, 16);
+
+
+.title_promo {
+    font-family: "Fugaz One", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 64px; /* Збільшуємо розмір шрифту */
+    line-height: 82px; /* Збільшуємо розмір міжрядкового інтервалу */
+    text-align: left;
+    width: 400px; /* Збільшуємо ширину */
+    height: 250px; /* Збільшуємо висоту */
+
+    span {
+        color: $primary-color;
+    }
+}
+
+.wrepper_promo {
+    padding-bottom: 100px;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.description_introduction {
+    width: 378px; /* Збільшуємо ширину */
+    height: 96px; /* Збільшуємо висоту */
+}
+
+.info {
+    font-family: Inter;
+    font-size: 20px; /* Збільшуємо розмір шрифту */
+    font-weight: 700;
+    line-height: 20px; /* Збільшуємо розмір міжрядкового інтервалу */
+    text-align: left;
+}
+
+.btn_block {
+    margin-top: 15px; /* Збільшуємо відступ */
+    display: flex;
+    gap: 18px; /* Збільшуємо проміжок між кнопками */
+}
+
+.Place_Order_btn,
+.Get_Started_btn {
+    width: 118px; /* Збільшуємо ширину */
+    height: 36px; /* Збільшуємо висоту */
+    border-radius: 40px; /* Збільшуємо радіус */
+    font-family: Inter;
+    font-size: 14px; /* Збільшуємо розмір шрифту */
+    font-weight: 700;
+    line-height: 16px; /* Збільшуємо розмір міжрядкового інтервалу */
+}
+
+.Place_Order_btn {
+    background: $primary-color;
+    border: none;
+    color: white;
+}
+
+.Get_Started_btn {
+    border: 2px solid $primary-color; /* Змінюємо товщину границі */
+    background-color: white;
+    color: $primary-color;
+}
+
+.promo_info_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.promo_img_section {
+    position: relative;
+
+    .pizza2 {
+        position: relative;
+        width: 380px;
+        z-index: 2;
+    }
+
+    .ecllipse {
+        position: absolute;
+        width: 440px;
+        z-index: 1;
+    }
+}

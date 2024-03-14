@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 $black: #232323;
 $background: #ffdf8c;
 $gray-line: #f6f6f6;
@@ -15,7 +17,7 @@ $duration: 0.15s;
     margin: 0;
     list-style: none;
     outline: none;
-    font-family: 'Proxima Nova', Roboto, system-ui, Tahoma, sans-serif;
+    font-family: "Manrope", sans-serif;
     box-sizing: border-box;
   }
   
