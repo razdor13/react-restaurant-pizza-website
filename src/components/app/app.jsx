@@ -24,19 +24,7 @@ const App = () => {
     return (
         <div className="wrapper">
             <Header />
-            <div className='content'>
-                <div className="container">
-                    <Promo/>
-                    <div className='content__top'>
-                        <Categories/>
-                        <Sort/>
-                    </div>
-                    <div className='content__title'>Все пиццы</div>
-                    <div className='content__items'>
-                        <PizzaBlock/>
-                    </div>
-                </div>
-            </div>
+            <PizzaBlock/>
         </div>
     )
 }
