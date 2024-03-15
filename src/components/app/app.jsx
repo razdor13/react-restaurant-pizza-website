@@ -6,6 +6,7 @@ import Categories from '../Categories/Categories.jsx';
 import Sort from '../Sort/Sort.jsx';
 import PizzaBlock from '../PizzaBlock/PizzaBlock.jsx';
 import Promo from '../Promo/Promo.jsx';
+import CartEmpty from '../Card/Card.jsx';
 const App = () => {
 
     const { loading, error, getHelloWorld } = usePizzaService();
@@ -24,7 +25,7 @@ const App = () => {
     return (
         <div className="wrapper">
             <Header />
-            <PizzaBlock/>
+            <CartEmpty/>
         </div>
     )
 }
