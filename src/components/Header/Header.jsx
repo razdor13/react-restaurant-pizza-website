@@ -7,10 +7,10 @@ const Header = () => {
             <div class="header">
                 <div class="container">
                     <div class="header__logo">
-                        <img width="38" src={pizza} alt="Pizza logo" />
+                        <img width="50" src={pizza} alt="Pizza logo" />
                         <div>
                             <h1>React Pizza</h1>
-                            <p>самая вкусная пицца во вселенной</p>
+                            <p> -Best for you-</p>
                         </div>
                     </div>
                     <div class="header__cart">

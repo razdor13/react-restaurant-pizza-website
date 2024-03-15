@@ -9,6 +9,7 @@ const PizzaBlock = () => {
      
     
     return (
+        
         <div className='content'>
                 <div className="container">
                     <div className='content__top'>
