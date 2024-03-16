@@ -4,20 +4,20 @@ import Ecllipse from '../../static/Ellipse 1.png'
 import { Link } from "react-router-dom"
 const Promo = () => {
     return (
-        <div class="wrepper_promo">
-            <div class="promo_info_section">
+        <div className="wrepper_promo">
+            <div className="promo_info_section">
                 <h2 className="title_promo">Meet, Eat & <span>Enjoy</span> The <span>Taste</span></h2>
-                <div class="description_introduction">
-                    <h3 class="info">Food tastes better when you share it with your family and friends.</h3>
-                    <div class="btn_block">
-                        <Link to="/other" class="Place_Order_btn">Place Order</Link>
-                        <button class="Get_Started_btn">Get Started</button>
+                <div className="description_introduction">
+                    <h3 className="info">Food tastes better when you share it with your family and friends.</h3>
+                    <div className="btn_block">
+                        <Link to="/other"  className="Place_Order_btn">Place Order</Link>
+                        <button className="Get_Started_btn">Get Started</button>
                     </div>
                 </div>
             </div>
-            <div class="promo_img_section">
-                <img class="ecllipse" src={Ecllipse} alt=""></img>
-                <img class="pizza2" src={pizzaPromo} alt=""></img>
+            <div className="promo_img_section">
+                <img className="ecllipse" src={Ecllipse} alt=""></img>
+                <img className="pizza2" src={pizzaPromo} alt=""></img>
             </div>       
         </div>
         )

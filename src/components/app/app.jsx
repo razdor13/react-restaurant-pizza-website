@@ -3,6 +3,7 @@ import usePizzaService from '../../services/PizzaService'
 import { useEffect, useRef, useState } from 'react';
 import PizzaBlock from '../PizzaBlock/PizzaBlock.jsx';
 import Promo from '../Promo/Promo.jsx';
+import CartEmpty from '../Card/Card.jsx';
 import MainLayout from '../../layouts/MainLayout.jsx';
 import { Route, Routes, BrowserRouter  as Router } from 'react-router-dom';
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
                 <Route path="/" element={<MainLayout />}>
                     <Route index element={<Promo />} />
                     <Route path="/other" element={<PizzaBlock />} />
+                    <Route path='/cart' element={<CartEmpty/>} />
                 </Route>
             </Routes>
         </Router>
