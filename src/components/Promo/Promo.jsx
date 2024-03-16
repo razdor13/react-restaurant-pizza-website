@@ -1,6 +1,7 @@
 import "../Promo/Promo.scss"
 import pizzaPromo from '../../static/pizza2.png'
 import Ecllipse from '../../static/Ellipse 1.png'
+import { Link } from "react-router-dom"
 const Promo = () => {
     return (
         <div class="wrepper_promo">
@@ -9,7 +10,7 @@ const Promo = () => {
                 <div class="description_introduction">
                     <h3 class="info">Food tastes better when you share it with your family and friends.</h3>
                     <div class="btn_block">
-                        <button class="Place_Order_btn">Place Order</button>
+                        <Link to="/other" class="Place_Order_btn">Place Order</Link>
                         <button class="Get_Started_btn">Get Started</button>
                     </div>
                 </div>
