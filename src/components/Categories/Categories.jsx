@@ -22,7 +22,7 @@ const Categories = () => {
                         <li onClick={() => onClickCategory(4)} className={activeIndex === 4 ? 'active' : ''}> </li> */}
                         {
                             categories.map((categ,i) => 
-                            (<li onClick={() => onClickCategory(i)} className={activeIndex === i ? 'active' : ''}>{categ}</li>)
+                            (<li onClick={() => onClickCategory(i)} key={i} className={activeIndex === i ? 'active' : ''}>{categ}</li>)
                             )
                         }
                     </ul>
