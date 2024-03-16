@@ -1,12 +1,10 @@
 import '../app/app.scss'
 import usePizzaService from '../../services/PizzaService'
 import { useEffect, useRef, useState } from 'react';
-import Header from '../Header/Header.jsx';
-import Categories from '../Categories/Categories.jsx';
-import Sort from '../Sort/Sort.jsx';
 import PizzaBlock from '../PizzaBlock/PizzaBlock.jsx';
 import Promo from '../Promo/Promo.jsx';
-import CartEmpty from '../Card/Card.jsx';
+import MainLayout from '../../layouts/MainLayout.jsx';
+import { Route, Routes, BrowserRouter  as Router } from 'react-router-dom';
 const App = () => {
 
     const { loading, error, getHelloWorld } = usePizzaService();
@@ -23,10 +21,14 @@ const App = () => {
     };
 
     return (
-        <div className="wrapper">
-            <Header />
-            <CartEmpty/>
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<MainLayout />}>
+                    <Route index element={<Promo />} />
+                    <Route path="/other" element={<PizzaBlock />} />
+                </Route>
+            </Routes>
+        </Router>
     )
 }
 
