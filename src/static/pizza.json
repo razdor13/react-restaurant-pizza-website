@@ -50,7 +50,7 @@
         "rating": 8
     },
     {
-        "id": 6,
+        "id": 22,
         "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d2e337e9-e07a-4199-9cc1-501cc44cb8f8.jpg",
         "title": "Пепероні",
         "types": [0, 1],
@@ -80,7 +80,7 @@
         "rating": 9
     },
     {
-        "id": 7,
+        "id": 15,
         "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
         "title": "Маргарита",
         "types": [0, 1],
@@ -120,7 +120,7 @@
         "rating": 10
     },
     {
-        "id": 7,
+        "id": 12,
         "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
         "title": "Маргарита",
         "types": [0, 1],

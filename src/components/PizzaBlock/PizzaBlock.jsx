@@ -18,7 +18,7 @@ const PizzaBlock = () => {
                     </div>
                     <div className='content__title'>Все пиццы</div>
                     <div className='content__items'>
-                        {pizzas.map((obj) => (<PizzaItems {...obj} />))}
+                        {pizzas.map((obj,i) => (<PizzaItems {...obj} key={i} />))}
                     </div>
                 </div>
             </div>
