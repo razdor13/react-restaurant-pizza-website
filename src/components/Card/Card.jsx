@@ -6,22 +6,22 @@ import { Link } from 'react-router-dom';
 const CartEmpty = () => {
   return (
     <div className='content'>
-      <div class="cart cart--empty">
+      <div className="cart cart--empty">
         <h2>
-          Корзина пустая <icon>😕</icon>
+          Кошик порожній 😕
         </h2>
         <p>
-          Вероятней всего, вы не заказывали ещё пиццу.
+          Ймовірно, ви ще не замовляли піцу.
           <br />
-          Для того, чтобы заказать пиццу, перейди на главную страницу.
+          Для того, щоб замовити піцу, перейдіть на сто
         </p>
-        <img src={cart} alt="Empty cart" />
-        <div to="/" class="button button--black">
-          <span>Вернуться назад</span>
-        </div>
+        <img src={cart} alt="Порожній кошик" />
+        <Link to="/other" className="button button--black">
+          <span>Повернутися назад</span>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default CartEmpty;
+export default CartEmpty; 

@@ -46,11 +46,14 @@ $primary-color: rgb(255, 145, 16);
 
 .Place_Order_btn,
 .Get_Started_btn {
+    display: flex;
+    justify-content: center; /* Вирівнювання по горизонталі */
+    align-items: center; /* Вирівнювання по вертикалі */
     width: 118px; /* Збільшуємо ширину */
     height: 36px; /* Збільшуємо висоту */
     border-radius: 40px; /* Збільшуємо радіус */
     font-family: Inter;
-    font-size: 14px; /* Збільшуємо розмір шрифту */
+    font-size: 18px; /* Збільшуємо розмір шрифту */
     font-weight: 700;
     line-height: 16px; /* Збільшуємо розмір міжрядкового інтервалу */
 }

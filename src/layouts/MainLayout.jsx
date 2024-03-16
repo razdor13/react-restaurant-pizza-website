@@ -9,7 +9,6 @@ const MainLayout = () => {
       <Header />
       <div className="content">
         <Outlet />
-        
       </div>
     </div>
   );
