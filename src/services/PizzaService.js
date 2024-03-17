@@ -3,7 +3,7 @@ import { useHttp } from "../hooks/http.hooks"
 
 const  usePizzaService = () => {
     
-    const {loading,request} = useHttp()
+    const {loading,request,setLoading} = useHttp()
 
 
     const _apiBase = `${location.protocol}//${location.host}/stat`
@@ -14,7 +14,7 @@ const  usePizzaService = () => {
         return res
     }
     
-    return  {loading,getHelloWorld}
+    return  {loading,setLoading,getHelloWorld}
 }
 
 
