@@ -6,12 +6,14 @@ import Categories from "../Categories/Categories.jsx"
 import Sort from "../Sort/Sort.jsx"
 import { useState } from "react"
 import usePizzaService from "../../services/PizzaService.js"
+import { Skeleton } from "./Skeleton.jsx"
 const PizzaBlock = () => {
-    const { loading, error, getHelloWorld } = usePizzaService();
+    const { loading,setLoading, error, getHelloWorld } = usePizzaService();
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        onRequest();
+        setLoading(true)
+        setTimeout(onRequest,3000)
     }, []);
 
     const onRequest = () => {
@@ -29,9 +31,9 @@ const PizzaBlock = () => {
                 </div>
                 <div className='content__title'>Все пиццы</div>
                 <div className='content__items'>
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : error ? (
+                    {loading ? 
+                        [...new Array(6)].map((_,index) => <Skeleton key={index}/>)
+                     : error ? (
                         <div>Something went wrong. Please try again later.</div>
                     ) : (
                         items.map(obj => <PizzaItems {...obj} key={obj.id} />)
