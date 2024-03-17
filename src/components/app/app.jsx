@@ -11,15 +11,7 @@ const App = () => {
     const { loading, error, getHelloWorld } = usePizzaService();
     const [message, setMessage] = useState()
 
-    useEffect(() => {
-        // onRequest()
-
-    }, [])
-
-    const onRequest = () => {
-        getHelloWorld()
-            .then(res => setMessage(() => res.message))
-    };
+    
 
     return (
         <Router>
