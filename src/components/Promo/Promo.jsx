@@ -10,8 +10,8 @@ const Promo = () => {
                 <div className="description_introduction">
                     <h3 className="info">Food tastes better when you share it with your family and friends.</h3>
                     <div className="btn_block">
-                        <Link to="/pizzas"  className="Place_Order_btn">Place Order</Link>
-                        <Link to="/gg" className="Get_Started_btn">Get Started</Link>
+                        <Link to="/pizzas"  className="Place_Order_btn">Go</Link>
+                        <Link to="/gg" className="Get_Started_btn">?</Link>
                     </div>
                 </div>
             </div>
