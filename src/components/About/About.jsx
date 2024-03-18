@@ -7,14 +7,15 @@ const About = () => {
         <div className='container'>
             <h2>About us</h2>
             <div className='Nav'>
-                <NavLink to={'/about'} end style={({ isActive }) => ({ color: isActive ? 'red' : 'inherit' })}>
+                <NavLink to='/about' end activeClassName='active'>
                     Story
                 </NavLink>
                 /
-                <NavLink to={'contact'} style={({ isActive }) => ({ color: isActive ? 'red' : 'inherit' })}>
+                <NavLink to='contact' activeClassName='active'>
                     Contact
-                </NavLink></div>
-
+                </NavLink>
+            </div>
+            
             <Outlet />
         </div>
     );
