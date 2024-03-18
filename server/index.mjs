@@ -145,7 +145,9 @@ const __dirname = path.dirname(__filename)
 server.register(fastifyStatic,{
     root: path.join(__dirname, '../build')
 })
-
+server.setNotFoundHandler((requst, reply) => {
+    return reply.send('index.html')
+})
 
 const port = process.env.PORT ||  1234
 const host = process.env.HOST  || '0.0.0.0'
