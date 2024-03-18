@@ -1,6 +1,5 @@
 
-import { useEffect } from "react";
-import "../PizzaItems/PizzaItems.scss"
+
 const typeNames = ['тонкое', 'традиционное','IMBA'];
 
 function PizzaItems({ id, title, price, imageUrl, sizes, types, rating }) {
