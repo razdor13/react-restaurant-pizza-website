@@ -1,4 +1,7 @@
-import '../PizzaBlock/Pizzablock.scss'
+
+
+import "../PizzaBlock/PizzaBlock.scss"
+
 import { useEffect } from "react"
 import PizzaItems from "../PizzaItems/PizzaItems.jsx"
 import Categories from "../Categories/Categories.jsx"
@@ -31,7 +34,11 @@ const PizzaBlock = () => {
                 <div className='content__title'>Все пиццы</div>
                 <div className='content__items'>
                     {loading ? 
+
                         [...new Array(6)].map((_,index) => <div className="pizza-block-wrapper"><Skeleton key={index}/></div>)
+
+                   
+
                      : error ? (
                         <div>Something went wrong. Please try again later.</div>
                     ) : (

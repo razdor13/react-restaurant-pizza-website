@@ -7,6 +7,7 @@ const About = () => {
         <div className='container'>
             <h2>About us</h2>
             <div className='Nav'>
+
                 <NavLink to='/about' end activeClassName='active'>
                     Story
                 </NavLink>
