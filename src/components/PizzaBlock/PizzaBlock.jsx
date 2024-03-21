@@ -10,16 +10,16 @@ import { useState } from "react"
 import usePizzaService from "../../services/PizzaService.js"
 import { Skeleton } from "./Skeleton.jsx"
 const PizzaBlock = () => {
-    const { loading,setLoading, error, getHelloWorld } = usePizzaService();
+    const { loading,setLoading, error, getPizzaBySort } = usePizzaService();
     const [items, setItems] = useState([]);
 
     useEffect(() => {
         setLoading(true)
-        setTimeout(onRequest,3000)
+        onRequest()
     }, []);
 
     const onRequest = () => {
-        getHelloWorld()
+        getPizzaBySort("price",3)
             .then(res => setItems(res))
             .catch(error => console.error('Error fetching data:', error));
     };
@@ -35,7 +35,7 @@ const PizzaBlock = () => {
                 <div className='content__items'>
                     {loading ? 
 
-                        [...new Array(6)].map((_,index) => <div className="pizza-block-wrapper"><Skeleton key={index}/></div>)
+                        [...new Array(8)].map((_,index) => <div className="pizza-block-wrapper"><Skeleton key={index}/></div>)
 
                    
 

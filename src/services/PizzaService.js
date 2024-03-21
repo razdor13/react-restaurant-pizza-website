@@ -6,15 +6,15 @@ const  usePizzaService = () => {
     const {loading,request,setLoading} = useHttp()
 
 
-    const _apiBase = `${location.protocol}//${location.host}/stat`
+    const _apiBase = `${location.protocol}//${location.host}/pizzas/sorted`
     
     
-    const getHelloWorld = async () => {
-        const res = await request(_apiBase)
+    const getPizzaBySort = async (sort,filter) => {
+        const res = await request(`${_apiBase}?sortBy=${sort}&filterByCategory=${filter}`)
         return res
     }
     
-    return  {loading,setLoading,getHelloWorld}
+    return  {loading,setLoading,getPizzaBySort}
 }
 
 
