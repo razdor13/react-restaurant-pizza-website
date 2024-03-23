@@ -1,6 +1,6 @@
 
 
-const typeNames = ['тонкое', 'традиционное','IMBA'];
+const typeNames = ['Тонке', 'ЯкУмами','IMBA'];
 
 function PizzaItems({ id, title, price, imageUrl, sizes, types, rating }) {
     const [activeType, setActiveType] = React.useState(types.length < 2? types[0]: 0);

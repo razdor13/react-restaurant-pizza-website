@@ -19,7 +19,7 @@ const PizzaBlock = () => {
     }, []);
 
     const onRequest = () => {
-        getPizzaBySort("price",3)
+        getPizzaBySort("price",3,'пе',1)
             .then(res => setItems(res))
             .catch(error => console.error('Error fetching data:', error));
     };

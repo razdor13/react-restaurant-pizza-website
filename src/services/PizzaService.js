@@ -9,8 +9,11 @@ const  usePizzaService = () => {
     const _apiBase = `${location.protocol}//${location.host}/pizzas/sorted`
     
     
-    const getPizzaBySort = async (sort,filter) => {
-        const res = await request(`${_apiBase}?sortBy=${sort}&filterByCategory=${filter}`)
+    const getPizzaBySort = async (sort,filterByCatgr,filterBySearch,numberPage) => {
+        const limitItemOnPage = 8
+        const pathOfPagination = `&numberPage=${numberPage}&limitItemOnPage=${limitItemOnPage}`
+        const path=`${_apiBase}?sortBy=${sort}&filterByCategory=${filterByCatgr}&filterBySearch=${filterBySearch}${pathOfPagination}`
+        const res = await request(path)
         return res
     }
     
