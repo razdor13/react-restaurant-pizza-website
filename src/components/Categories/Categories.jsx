@@ -1,23 +1,23 @@
-import { useState } from "react"
+
 import "../Categories/Categories.scss"
-
-
+import { useSelector, useDispatch } from 'react-redux'
+import { chengeIndex , selectIndex} from "../../redux/slices/filterSlice"
 
 
 const Categories = () => {
-    const [activeIndex ,setActiveIndex] = useState(0)
-
+    const dispatch = useDispatch()
+    const presentIndex = useSelector(selectIndex)
     const categories = ['Всі',`М'ясні`,  'Овочеві' ,'Гриль' ,'Гострі']
 
     const onClickCategory = (index) => {
-        setActiveIndex(index)
+        dispatch(chengeIndex(index))
     }
      return (
                 <div className="categories">
                     <ul>
                         {
                             categories.map((categ,i) => 
-                            (<li onClick={() => onClickCategory(i)} key={i} className={activeIndex === i ? 'active' : ''}>{categ}</li>)
+                            (<li onClick={() => onClickCategory(i)} key={i} className={presentIndex === i ? 'active' : ''}>{categ}</li>)
                             )
                         }
                     </ul>
