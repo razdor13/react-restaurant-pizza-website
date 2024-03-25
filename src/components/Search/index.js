@@ -1,8 +1,12 @@
 import styles from './Search.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeIndex,selectSearch } from "../../redux/slices/searchSlice"
 
 const Search = () => {
 
-
+  const dispatch = useDispatch()
+  const search = useSelector(selectSearch)
+  console.log(search)
   return (
     <div className={styles.root}>
       <svg
