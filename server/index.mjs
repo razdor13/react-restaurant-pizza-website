@@ -165,16 +165,18 @@ server.get("/pizzas/sorted", async (request, reply) => {
     const {sortBy,filterByCategory,filterBySearch,limitItemOnPage,numberPage} = request.query;
     console.log(sortBy,filterByCategory,filterBySearch,numberPage)
     let sortedPizzas = [...DB];
-
     switch (sortBy) {
-        case "rating":
+        case '0':
             sortedPizzas.sort((a, b) => b.rating - a.rating);
+            console.log(0)
             break;
-        case "title":
-            sortedPizzas.sort((a, b) => a.title.localeCompare(b.title));
-            break;
-        case "price":
+        case '1':
             sortedPizzas.sort((a, b) => a.price - b.price);
+            console.log(1)
+            break;
+        case '2':
+            sortedPizzas.sort((a, b) => a.title.localeCompare(b.title));
+            console.log(2)
             break;
     }
 

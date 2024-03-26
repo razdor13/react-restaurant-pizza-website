@@ -11,7 +11,7 @@ const Sort = () => {
     // const [selected, setSelected ]= useState(0)
     const list = ['Популяр.', 'Ціна', 'Алфавіт']
     const onClickListItem = (i) => {
-        dispatch(changeIndex(list[i]))
+        dispatch(changeIndex(i))
         setOpen(false)
     }
     return (
