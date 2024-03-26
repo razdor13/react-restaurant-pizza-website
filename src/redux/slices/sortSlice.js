@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const sortSlice = createSlice({
   name: 'sort',
   initialState: {
-    sortIndex: 0,
+    sortIndex: 'price',
   },
   reducers: {
     changeIndex: (state,action) => {

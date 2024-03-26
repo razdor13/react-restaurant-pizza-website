@@ -1,12 +1,16 @@
 import styles from './Search.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex,selectSearch } from "../../redux/slices/searchSlice"
+import { changeSearch,selectSearch } from "../../redux/slices/searchSlice"
 
 const Search = () => {
 
   const dispatch = useDispatch()
   const search = useSelector(selectSearch)
-  console.log(search)
+  
+  const handleInputChange = (e) => {
+    dispatch(changeSearch(e.target.value));
+    console.log(search)
+  };
   return (
     <div className={styles.root}>
       <svg
@@ -43,8 +47,10 @@ const Search = () => {
         />
       </svg>
       <input
+        type="text"
         className={styles.input}
         placeholder="Пошук піцци"
+        onChange={handleInputChange}
       />
       
         <svg

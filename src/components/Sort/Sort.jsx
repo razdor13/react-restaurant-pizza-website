@@ -2,14 +2,16 @@ import { useState } from "react";
 import "../Sort/Sort.scss"
 import { useDispatch ,useSelector } from "react-redux";
 import { changeIndex,selectIndex } from "../../redux/slices/sortSlice";
+
 const Sort = () => {
+    
     const [open, setOpen] = useState(false)
     const dispatch = useDispatch()
     const selected = useSelector(selectIndex)
     // const [selected, setSelected ]= useState(0)
     const list = ['Популяр.', 'Ціна', 'Алфавіт']
     const onClickListItem = (i) => {
-        dispatch(changeIndex(i))
+        dispatch(changeIndex(list[i]))
         setOpen(false)
     }
     return (

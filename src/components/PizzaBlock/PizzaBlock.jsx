@@ -9,21 +9,19 @@ import Sort from "../Sort/Sort.jsx"
 import { useState } from "react"
 import usePizzaService from "../../services/PizzaService.js"
 import { Skeleton } from "./Skeleton.jsx"
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPizzaList } from "../../redux/slices/pizzaSlice.js"
 const PizzaBlock = () => {
-    const { loading,setLoading, error, getPizzaBySort } = usePizzaService();
+    const { loading, error, getPizzaBySort } = usePizzaService();
     const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        setLoading(true)
-        onRequest()
-    }, []);
-
-    const onRequest = () => {
-        getPizzaBySort("price",3,'пе',1)
-            .then(res => setItems(res))
-            .catch(error => console.error('Error fetching data:', error));
-    };
+    const dispatch = useDispatch();
+    const pizzaList = useSelector(state => state.pizzaList.data);
     
+
+    
+    useEffect(() => {
+        dispatch(fetchPizzaList());
+    }, []);
     return (
         <div className='content'>
             <div className="container">
@@ -42,7 +40,7 @@ const PizzaBlock = () => {
                      : error ? (
                         <div>Something went wrong. Please try again later.</div>
                     ) : (
-                        items.map(obj => <PizzaItems {...obj} key={obj.id} />)
+                        pizzaList.map(obj => <PizzaItems {...obj} key={obj.id} />)
                     )}
                 </div>
             </div>
