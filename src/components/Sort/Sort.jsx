@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../Sort/Sort.scss"
 import { useDispatch ,useSelector } from "react-redux";
 import { changeIndex,selectIndex } from "../../redux/slices/sortSlice";
+import { setCurrentPage } from "../../redux/slices/pizzaSliceAsync";
 
 const Sort = () => {
     
@@ -12,6 +13,7 @@ const Sort = () => {
     const list = ['Популяр.', 'Ціна', 'Алфавіт']
     const onClickListItem = (i) => {
         dispatch(changeIndex(i))
+        dispatch(setCurrentPage(0))
         setOpen(false)
     }
     return (

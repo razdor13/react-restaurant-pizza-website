@@ -10,8 +10,9 @@ export const fetchPizzaList = createAsyncThunk(
     async (arg, thunkAPI) => {
         const { activeIndex } = thunkAPI.getState().filter;
         const { searchValue } = thunkAPI.getState().search;
-        const { sortIndex } = thunkAPI.getState().sort;  
-        const response = await getPizzaBySort(sortIndex, activeIndex, searchValue,1);
+        const { sortIndex } = thunkAPI.getState().sort; 
+        const { currentPg } =thunkAPI.getState().pizzaList.data
+        const response = await getPizzaBySort(sortIndex, activeIndex, searchValue,currentPg);
         const data = await response.json();
         return data;
     }
@@ -30,13 +31,13 @@ const getPizzaBySort = async (sort,filterByCatgr,filterBySearch,numberPage) => {
 export const pizzaListSlice = createSlice({
     name: 'pizzaList',
     initialState: {
-        data: {pizzas : []},
+        data: {pizzas : [],totalPages :1,currentPg:0},
         loading: false,
         error: null,
     },
     reducers: {
-        changeIndex: (state, action) => {
-            state.activeIndex = action.payload;
+        setCurrentPage: (state, action) => {
+            state.data.currentPg = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -57,5 +58,5 @@ export const pizzaListSlice = createSlice({
 });
 
 
-export const { changeIndex } = pizzaListSlice.actions;
+export const { setCurrentPage } = pizzaListSlice.actions;
 export default pizzaListSlice.reducer;

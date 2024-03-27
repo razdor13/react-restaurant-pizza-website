@@ -2,6 +2,7 @@
 import "../Categories/Categories.scss"
 import { useSelector, useDispatch } from 'react-redux'
 import { chengeIndex , selectIndex} from "../../redux/slices/filterSlice"
+import { setCurrentPage } from "../../redux/slices/pizzaSliceAsync"
 
 
 const Categories = () => {
@@ -11,6 +12,7 @@ const Categories = () => {
 
     const onClickCategory = (index) => {
         dispatch(chengeIndex(index))
+        dispatch(setCurrentPage(0))
     }
      return (
                 <div className="categories">

@@ -10,7 +10,7 @@ import { useState } from "react"
 import usePizzaService from "../../services/PizzaService.js"
 import { Skeleton } from "./Skeleton.jsx"
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPizzaList } from "../../redux/slices/pizzaSliceAsync.js"
+import { fetchPizzaList, setCurrentPage } from "../../redux/slices/pizzaSliceAsync.js"
 import Pagination from "../Pagination/index.js"
 const PizzaBlock = () => {
     const { loading, error, getPizzaBySort } = usePizzaService();
@@ -19,11 +19,16 @@ const PizzaBlock = () => {
     const pizzaList = useSelector(state => state.pizzaList.data.pizzas);
     const search = useSelector(state => state.search)
     const filter = useSelector(state => state.filter)
+    const totalPages = useSelector(state => state.pizzaList.data.totalPages)
+    const currentPage = useSelector(state => state.pizzaList.data.currentPg)
     const sort = useSelector(state => state.sort)
     
     useEffect(() => {
         dispatch(fetchPizzaList());
-    }, [search,sort,filter]);
+    }, [search,sort,filter,currentPage]);
+    const onChangePage = (number) => {
+        dispatch(setCurrentPage(number));
+      };
     return (
         <div className='content'>
             <div className="container">
@@ -45,7 +50,7 @@ const PizzaBlock = () => {
                         pizzaList.map(obj => <PizzaItems {...obj} key={obj.id} />)
                     )}
                 </div>
-                <Pagination/>
+                <Pagination  onChangePage={onChangePage} currentPage={currentPage} totalPages={totalPages}/>
             </div>
         </div>
     );

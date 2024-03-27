@@ -2,6 +2,7 @@ import fastify from "fastify";
 import fastifyStatic from "@fastify/static";
 import path from "path";
 import {fileURLToPath} from "url";
+import { current } from "@reduxjs/toolkit";
 
 //fastify
 const DB = [
@@ -163,7 +164,7 @@ const host = process.env.HOST || "0.0.0.0";
 
 server.get("/pizzas/sorted", async (request, reply) => {
     const { sortBy, filterByCategory, filterBySearch, limitItemOnPage, numberPage } = request.query;
-    console.log(sortBy, filterByCategory, filterBySearch, numberPage);
+    const currentPg= +numberPage
     
     let sortedPizzas = [...DB];
     
@@ -171,15 +172,13 @@ server.get("/pizzas/sorted", async (request, reply) => {
     switch (sortBy) {
         case '0':
             sortedPizzas.sort((a, b) => b.rating - a.rating);
-            console.log(0);
+            
             break;
         case '1':
             sortedPizzas.sort((a, b) => a.price - b.price);
-            console.log(1);
             break;
         case '2':
             sortedPizzas.sort((a, b) => a.title.localeCompare(b.title));
-            console.log(2);
             break;
     }
 
@@ -196,11 +195,10 @@ server.get("/pizzas/sorted", async (request, reply) => {
     // Пагінація
     const totalPizzas = sortedPizzas.length;
     const totalPages = Math.ceil(totalPizzas / limitItemOnPage);
-    const startIndex = (numberPage - 1) * limitItemOnPage;
+    const startIndex = numberPage * limitItemOnPage;
     const endIndex = startIndex + parseInt(limitItemOnPage, 10);
     const paginatedPizzas = sortedPizzas.slice(startIndex, endIndex)
-
-    reply.send({ pizzas: paginatedPizzas, totalPages });
+    reply.send({ pizzas: paginatedPizzas, totalPages ,currentPg });
 });
 
 server.setNotFoundHandler((request, reply) => {
