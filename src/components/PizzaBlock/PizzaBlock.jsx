@@ -11,15 +11,16 @@ import usePizzaService from "../../services/PizzaService.js"
 import { Skeleton } from "./Skeleton.jsx"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPizzaList } from "../../redux/slices/pizzaSliceAsync.js"
+import Pagination from "../Pagination/index.js"
 const PizzaBlock = () => {
     const { loading, error, getPizzaBySort } = usePizzaService();
     const [items, setItems] = useState([]);
     const dispatch = useDispatch();
-    const pizzaList = useSelector(state => state.pizzaList.data);
+    const pizzaList = useSelector(state => state.pizzaList.data.pizzas);
     const search = useSelector(state => state.search)
     const filter = useSelector(state => state.filter)
     const sort = useSelector(state => state.sort)
-    console.log(search)
+    
     useEffect(() => {
         dispatch(fetchPizzaList());
     }, [search,sort,filter]);
@@ -44,6 +45,7 @@ const PizzaBlock = () => {
                         pizzaList.map(obj => <PizzaItems {...obj} key={obj.id} />)
                     )}
                 </div>
+                <Pagination/>
             </div>
         </div>
     );

@@ -30,7 +30,7 @@ const getPizzaBySort = async (sort,filterByCatgr,filterBySearch,numberPage) => {
 export const pizzaListSlice = createSlice({
     name: 'pizzaList',
     initialState: {
-        data: [],
+        data: {pizzas : []},
         loading: false,
         error: null,
     },

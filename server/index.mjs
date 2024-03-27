@@ -162,31 +162,45 @@ const port = process.env.PORT || 1234;
 const host = process.env.HOST || "0.0.0.0";
 
 server.get("/pizzas/sorted", async (request, reply) => {
-    const {sortBy,filterByCategory,filterBySearch,limitItemOnPage,numberPage} = request.query;
-    console.log(sortBy,filterByCategory,filterBySearch,numberPage)
+    const { sortBy, filterByCategory, filterBySearch, limitItemOnPage, numberPage } = request.query;
+    console.log(sortBy, filterByCategory, filterBySearch, numberPage);
+    
     let sortedPizzas = [...DB];
+    
+    // Сортування піц
     switch (sortBy) {
         case '0':
             sortedPizzas.sort((a, b) => b.rating - a.rating);
-            console.log(0)
+            console.log(0);
             break;
         case '1':
             sortedPizzas.sort((a, b) => a.price - b.price);
-            console.log(1)
+            console.log(1);
             break;
         case '2':
             sortedPizzas.sort((a, b) => a.title.localeCompare(b.title));
-            console.log(2)
+            console.log(2);
             break;
     }
 
+    // Фільтрація за категорією
     if (+filterByCategory) {
         sortedPizzas = sortedPizzas.filter((pizza) => pizza.category === +filterByCategory);
     }
+
+    // Пошук за назвою
     if (filterBySearch.trim()) {
         sortedPizzas = sortedPizzas.filter((pizza) => pizza.title.toLowerCase().includes(filterBySearch.trim().toLowerCase()));
     }
-    reply.send(sortedPizzas);
+    
+    // Пагінація
+    const totalPizzas = sortedPizzas.length;
+    const totalPages = Math.ceil(totalPizzas / limitItemOnPage);
+    const startIndex = (numberPage - 1) * limitItemOnPage;
+    const endIndex = startIndex + parseInt(limitItemOnPage, 10);
+    const paginatedPizzas = sortedPizzas.slice(startIndex, endIndex)
+
+    reply.send({ pizzas: paginatedPizzas, totalPages });
 });
 
 server.setNotFoundHandler((request, reply) => {
