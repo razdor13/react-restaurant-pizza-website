@@ -24,7 +24,6 @@ const getPizzaBySort = async (sort,filterByCatgr,filterBySearch,numberPage) => {
     const pathOfPagination = `&numberPage=${numberPage}&limitItemOnPage=${limitItemOnPage}`
     const path=`${_apiBase}?sortBy=${sort}&filterByCategory=${filterByCatgr}&filterBySearch=${filterBySearch}${pathOfPagination}`
     const res = await fetch(path)
-    console.log(res)
     return res
 }
 
