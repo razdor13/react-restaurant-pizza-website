@@ -53,7 +53,7 @@ function PizzaItems({ id, title, price, imageUrl, sizes, types, rating }) {
                   fill="white"
                 />
               </svg>
-              <span>Добавить</span>
+              <span>Додати</span>
                <i>0</i>
             </button>
           </div>

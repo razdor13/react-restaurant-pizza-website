@@ -13,16 +13,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPizzaList, setCurrentPage } from "../../redux/slices/pizzaSliceAsync.js"
 import Pagination from "../Pagination/index.js"
 const PizzaBlock = () => {
-    const { loading, error, getPizzaBySort } = usePizzaService();
     const [items, setItems] = useState([]);
     const dispatch = useDispatch();
     const pizzaList = useSelector(state => state.pizzaList.data.pizzas);
     const search = useSelector(state => state.search)
     const filter = useSelector(state => state.filter)
+    const loading = useSelector(state => state.pizzaList.loading)
+    const error = useSelector(state => state.pizzaList.error)
     const totalPages = useSelector(state => state.pizzaList.data.totalPages)
     const currentPage = useSelector(state => state.pizzaList.data.currentPg)
     const sort = useSelector(state => state.sort)
-    
+    console.log(loading)
     useEffect(() => {
         dispatch(fetchPizzaList());
     }, [search,sort,filter,currentPage]);
