@@ -3,10 +3,10 @@
 const typeNames = ['Тонке', 'ЯкУмами','IMBA'];
 
 function PizzaItems({ id, title, price, imageUrl, sizes, types, rating }) {
-    const [activeType, setActiveType] = React.useState(types.length < 2? types[0]: 0);
+    const [activeType, setActiveType] = React.useState(0);
     const [activeSize, setActiveSize] = React.useState(0);
   
-    
+    console.log(id)
   
     
     

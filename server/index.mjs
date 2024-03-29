@@ -2,7 +2,7 @@ import fastify from "fastify";
 import fastifyStatic from "@fastify/static";
 import path from "path";
 import {fileURLToPath} from "url";
-import { current } from "@reduxjs/toolkit";
+
 
 //fastify
 const DB = [
@@ -44,7 +44,7 @@ const DB = [
         imageUrl:
             "https://media.dodostatic.net/image/r:760x760/11EEC3FE2E7B10F2A5C8F1BB8850774F.webp",
         title: "Овочева Кисло-солодкий курятінг",
-        types: [1],
+        types: [0],
         sizes: [26, 30, 40],
         price: 275,
         category: 2,

@@ -24,13 +24,20 @@ export const pizzaListSlice = createSlice({
     name: 'pizzaList',
     initialState: {
         data: {pizzas : [],totalPages :1,currentPg:0},
-        loading: false,
+        loading: true,
         error: null,
     },
     reducers: {
         setCurrentPage: (state, action) => {
             state.data.currentPg = action.payload;
+        },
+        setPizzaType: (state, action) => {
+            state.data.settings.type = action.payload
+        },
+        setPizzaSize: (state, action) => {
+            state.data.settings.size = action.payload
         }
+        
     },
     extraReducers: (builder) => {
         builder
@@ -41,6 +48,15 @@ export const pizzaListSlice = createSlice({
             .addCase(fetchPizzaList.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
+                state.settings = action.payload.pizzas.map(pizza => {
+                    return {
+                        [pizza.id] : {
+                            type :pizza.types[0],
+                            size :pizza.sizes[0],
+                            count : 0
+                        }
+                    }
+                })
             })
             .addCase(fetchPizzaList.rejected, (state, action) => {
                 state.loading = false;
@@ -51,4 +67,5 @@ export const pizzaListSlice = createSlice({
 
 
 export const { setCurrentPage } = pizzaListSlice.actions;
+export const selectPizzas = (state) => state.pizzaList.data.pizzas;
 export default pizzaListSlice.reducer;
