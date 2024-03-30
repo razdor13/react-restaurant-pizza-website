@@ -62,7 +62,7 @@ const DB = [
         rating: 8,
     },
     {
-        id: 22,
+        id: 5,
         imageUrl:
             "https://media.dodostatic.net/image/r:760x760/11EEC4025D7CF3C8B88A96A6A0A3FCA2.webp",
         title: "Овочева Пепероні Тріумфальна",
@@ -73,7 +73,7 @@ const DB = [
         rating: 9,
     },
     {
-        id: 5,
+        id: 6,
         imageUrl:
             "https://media.dodostatic.net/image/r:760x760/11EEC3FF45A7635BB6C9C1EE7928D7C0.webp",
         title: "Гостра Крейзі пепероні",
@@ -84,7 +84,7 @@ const DB = [
         rating: 2,
     },
     {
-        id: 6,
+        id: 7,
         imageUrl:
             "https://media.dodostatic.net/image/r:760x760/11EEC3FF45A7635BB6C9C1EE7928D7C0.webp",
         title: "Гостра Пепероні Шалений",
@@ -95,7 +95,7 @@ const DB = [
         rating: 9,
     },
     {
-        id: 15,
+        id: 8,
         imageUrl:
             "https://media.dodostatic.net/image/r:760x760/11EEC406517DEC038C4566A0DB17C4C5.webp",
         title: "Гриль Маргарита Класична",
@@ -106,7 +106,7 @@ const DB = [
         rating: 10,
     },
     {
-        id: 8,
+        id: 9,
         imageUrl:
             "https://media.dodostatic.net/image/r:760x760/11EE8746504C56EFAAFC18476258243A.webp",
         title: "Чотири пори року Гриль Магічний",
@@ -117,7 +117,7 @@ const DB = [
         rating: 10,
     },
     {
-        id: 9,
+        id: 10,
         imageUrl:
             "https://media.dodostatic.net/image/r:760x760/11EEC402C8FAF642A8487C09E6CCC00E.webp",
         title: "Овочі та гриби Гастроном",
@@ -128,7 +128,7 @@ const DB = [
         rating: 7,
     },
     {
-        id: 7,
+        id: 11,
         imageUrl:
             "https://media.dodostatic.net/image/r:760x760/11EEC3FF8BA2BFD9B91717F63DB64762.webp",
         title: "Маргарита Повна Гармонія",

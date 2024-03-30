@@ -6,13 +6,11 @@ import { useEffect } from "react"
 import PizzaItems from "../PizzaItems/PizzaItems.jsx"
 import Categories from "../Categories/Categories.jsx"
 import Sort from "../Sort/Sort.jsx"
-import { useState } from "react"
 import { Skeleton } from "./Skeleton.jsx"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPizzaList, setCurrentPage } from "../../redux/slices/pizzaSliceAsync.js"
 import Pagination from "../Pagination/index.js"
 const PizzaBlock = () => {
-    const [items, setItems] = useState([]);
     const dispatch = useDispatch();
     const pizzaList = useSelector(state => state.pizzaList.data.pizzas);
     const search = useSelector(state => state.search)

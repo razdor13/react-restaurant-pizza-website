@@ -26,17 +26,23 @@ export const pizzaListSlice = createSlice({
         data: {pizzas : [],totalPages :1,currentPg:0},
         loading: true,
         error: null,
+        settings: {}
+        
     },
     reducers: {
         setCurrentPage: (state, action) => {
             state.data.currentPg = action.payload;
         },
         setPizzaType: (state, action) => {
-            state.data.settings.type = action.payload
+            const { pizzaId, newType } = action.payload;
+            
+            state.settings[pizzaId].size = newSize;
         },
         setPizzaSize: (state, action) => {
-            state.data.settings.size = action.payload
-        }
+            const { pizzaId, newSize } = action.payload;
+            
+            state.settings[pizzaId].size = newSize;
+        },
         
     },
     extraReducers: (builder) => {
@@ -48,15 +54,14 @@ export const pizzaListSlice = createSlice({
             .addCase(fetchPizzaList.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
-                state.settings = action.payload.pizzas.map(pizza => {
-                    return {
-                        [pizza.id] : {
-                            type :pizza.types[0],
-                            size :pizza.sizes[0],
-                            count : 0
-                        }
-                    }
-                })
+                state.settings = {};
+                action.payload.pizzas.forEach((pizza) => {
+                    state.settings[pizza.id] = {
+                        type: pizza.types[0],
+                        size: pizza.sizes[0],
+                        count: 0,
+                    };
+                });
             })
             .addCase(fetchPizzaList.rejected, (state, action) => {
                 state.loading = false;
@@ -66,6 +71,7 @@ export const pizzaListSlice = createSlice({
 });
 
 
-export const { setCurrentPage } = pizzaListSlice.actions;
+export const { setCurrentPage,setPizzaSize } = pizzaListSlice.actions;
 export const selectPizzas = (state) => state.pizzaList.data.pizzas;
+
 export default pizzaListSlice.reducer;
