@@ -55,11 +55,13 @@ export const pizzaListSlice = createSlice({
                 state.loading = false;
                 state.data = action.payload;
                 action.payload.pizzas.forEach((pizza) => {
-                    state.settings[pizza.id] = {
-                        type: pizza.types[0],
-                        size: pizza.sizes[0],
-                        count: 0,
-                    };
+                    if (!state.settings[pizza.id]) {
+                        state.settings[pizza.id] = {
+                            type: pizza.types[0],
+                            size: pizza.sizes[0],
+                            count: 0,
+                        };
+                    }
                 });
             })
             .addCase(fetchPizzaList.rejected, (state, action) => {

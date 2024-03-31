@@ -2,7 +2,22 @@ import "../Promo/Promo.scss"
 import pizzaPromo from '../../static/pizza2 (2).png'
 import Ecllipse from '../../static/Ellipse 1.png'
 import { Link } from "react-router-dom"
+import ScrollReveal from 'scrollreveal'
+import { useEffect } from "react"
+import { bottom, left, right } from "@popperjs/core"
+
+ScrollReveal({
+    reset: true,
+    distance: '1000px',
+    duration: 2000,
+    delay:200
+})
+
 const Promo = () => {
+    useEffect(() => {
+        ScrollReveal().reveal(`.promo_info_section`,{origin:"bottom"})
+        ScrollReveal().reveal(`.promo_img_section`,{origin:"top"})
+    },[])
     return (
         <div className="wrepper_promo">
             <div className="promo_info_section">

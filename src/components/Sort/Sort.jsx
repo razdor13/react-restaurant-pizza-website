@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../Sort/Sort.scss"
 import { useDispatch ,useSelector } from "react-redux";
 import { changeIndex,selectIndex } from "../../redux/slices/sortSlice";
 import { setCurrentPage } from "../../redux/slices/pizzaSliceAsync";
 
 const Sort = () => {
-    
+    const sortRef = useRef()
     const [open, setOpen] = useState(false)
     const dispatch = useDispatch()
     const selected = useSelector(selectIndex)
@@ -16,8 +16,21 @@ const Sort = () => {
         dispatch(setCurrentPage(0))
         setOpen(false)
     }
+    useEffect (() => {
+        const hendlClickOutside = (event)=> {
+            console.log(event.composedPath())
+            if (!event.composedPath().includes(sortRef.current)) {
+                setOpen(false)
+            }
+        }
+        document.body.addEventListener('click',hendlClickOutside)
+
+        return () => {
+            document.body.removeEventListener('click',hendlClickOutside)
+        }
+    },[])
     return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
