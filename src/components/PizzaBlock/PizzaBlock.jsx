@@ -20,7 +20,6 @@ const PizzaBlock = () => {
     const totalPages = useSelector(state => state.pizzaList.data.totalPages)
     const currentPage = useSelector(state => state.pizzaList.data.currentPg)
     const sort = useSelector(state => state.sort)
-    console.log(loading)
     useEffect(() => {
         dispatch(fetchPizzaList());
     }, [search,sort,filter,currentPage]);

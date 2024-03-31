@@ -36,7 +36,7 @@ export const pizzaListSlice = createSlice({
         setPizzaType: (state, action) => {
             const { pizzaId, newType } = action.payload;
             
-            state.settings[pizzaId].size = newSize;
+            state.settings[pizzaId].type = newType;
         },
         setPizzaSize: (state, action) => {
             const { pizzaId, newSize } = action.payload;
@@ -54,7 +54,6 @@ export const pizzaListSlice = createSlice({
             .addCase(fetchPizzaList.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
-                state.settings = {};
                 action.payload.pizzas.forEach((pizza) => {
                     state.settings[pizza.id] = {
                         type: pizza.types[0],
@@ -71,7 +70,7 @@ export const pizzaListSlice = createSlice({
 });
 
 
-export const { setCurrentPage,setPizzaSize } = pizzaListSlice.actions;
+export const { setCurrentPage,setPizzaSize,setPizzaType } = pizzaListSlice.actions;
 export const selectPizzas = (state) => state.pizzaList.data.pizzas;
 
 export default pizzaListSlice.reducer;

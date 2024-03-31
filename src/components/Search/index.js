@@ -1,19 +1,28 @@
 import styles from './Search.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSearch,selectSearch } from "../../redux/slices/searchSlice"
-
+import { useRef ,useCallback, useState, useEffect} from 'react';
+import debounce from 'lodash.debounce'
 const Search = () => {
-
+  const inputRef = useRef()
   const dispatch = useDispatch()
-  const search = useSelector(selectSearch)
-  
-  const handleInputChange = (e) => {
-    dispatch(changeSearch(e.target.value));
-    console.log(search)
-  };
+  const [valueInput, setValueInput] = useState('')
+
+  const handleInputChange = useCallback(
+    debounce((value) => {
+      dispatch(changeSearch(value))
+    },250),
+    []
+  )
   const handleClearClick = () => {
-    dispatch(changeSearch('')); // Очистити значення поля пошуку
+    dispatch(changeSearch(''));
+    setValueInput('')
+    inputRef.current.focus() 
   };
+  const onChangeInput = (event) => {
+    setValueInput(event.target.value)
+    handleInputChange(event.target.value)
+  }
   return (
     <div className={styles.root}>
       <svg
@@ -50,11 +59,12 @@ const Search = () => {
         />
       </svg>
       <input
+        ref={inputRef}
         type="text"
         className={styles.input}
         placeholder="Пошук піцци"
-        onChange={handleInputChange}
-        value={search}
+        onChange={onChangeInput}
+        value={valueInput}
       />
       
         <svg

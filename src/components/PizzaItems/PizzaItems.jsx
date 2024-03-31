@@ -1,18 +1,19 @@
 
 
-const typeNames = ['Тонке', 'ЯкУмами','IMBA'];
+
 import { useEffect } from "react";
-import { selectPizzaSettings, setPizzaSize } from "../../redux/slices/pizzaSliceAsync";
+import { selectPizzaSettings, setPizzaSize ,setPizzaType } from "../../redux/slices/pizzaSliceAsync";
 import { UseDispatch,useDispatch,useSelector } from "react-redux";
 function PizzaItems({ id, title, price, imageUrl, sizes, types, rating }) {
-    const [activeType, setActiveType] = React.useState(0);
     const dispatch = useDispatch()
-    const sizeState = useSelector(state => state.pizzaList.settings[id].size);
-    
+    const sizePizzaState = useSelector(state => state.pizzaList.settings[id].size);
+    const typePizzaStete = useSelector(state => state.pizzaList.settings[id].type)
     const setActiveSize = (size) =>  {
       dispatch(setPizzaSize({ pizzaId: id, newSize: size }))
     }
-    
+    const setActiveType = (type) =>  {
+      dispatch(setPizzaType({ pizzaId: id, newType: type }))
+    }
     return (
       <div className="pizza-block-wrapper">
         <div className="pizza-block">
@@ -24,8 +25,8 @@ function PizzaItems({ id, title, price, imageUrl, sizes, types, rating }) {
                 <li
                   key={typeId}
                   onClick={() => setActiveType(typeId)}
-                  className={activeType === typeId  ? 'active' : ''}>
-                  {typeNames[typeId]}
+                  className={typePizzaStete === typeId  ? 'active' : ''}>
+                  {typeId}
                   
                 </li>
                 
@@ -36,7 +37,7 @@ function PizzaItems({ id, title, price, imageUrl, sizes, types, rating }) {
                 <li
                   key={size}
                   onClick={() => setActiveSize(size)}
-                  className={sizeState === size ? 'active' : ''}>
+                  className={sizePizzaState === size ? 'active' : ''}>
                   {size} см.
                 </li>
               ))}
