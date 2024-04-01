@@ -26,7 +26,9 @@ export const pizzaListSlice = createSlice({
         data: {pizzas : [],totalPages :1,currentPg:0},
         loading: true,
         error: null,
-        settings: {}
+        settings: {},
+        types: [],
+        sizes: []
         
     },
     reducers: {
@@ -54,11 +56,13 @@ export const pizzaListSlice = createSlice({
             .addCase(fetchPizzaList.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
+                state.types = action.payload.types
+                state.sizes = action.payload.sizes
                 action.payload.pizzas.forEach((pizza) => {
                     if (!state.settings[pizza.id]) {
                         state.settings[pizza.id] = {
-                            type: pizza.types[0],
-                            size: pizza.sizes[0],
+                            type: action.payload.types[0],
+                            size: action.payload.sizes[0],
                             count: 0,
                         };
                     }

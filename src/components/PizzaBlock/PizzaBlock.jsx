@@ -11,6 +11,7 @@ import Pagination from "../Pagination/index.js"
 const PizzaBlock = () => {
     const dispatch = useDispatch();
     const pizzaList = useSelector(state => state.pizzaList.data.pizzas);
+    
     const search = useSelector(state => state.search)
     const filter = useSelector(state => state.filter)
     const totalPages = useSelector(state => state.pizzaList.data.totalPages)
@@ -36,7 +37,7 @@ const PizzaBlock = () => {
                 </div>
                 <div className='content__title'>Всі піци</div>
                 <div className='content__items'>
-                    {loading ? 
+                    {loading ?
                         [...new Array(8)].map((_, index) => <div className="pizza-block-wrapper" key={index}><Skeleton /></div>)
                         : error ? (
                             <div>Something went wrong. Please try again later.</div>

@@ -4,8 +4,10 @@
 import { useEffect } from "react";
 import { selectPizzaSettings, setPizzaSize, setPizzaType } from "../../redux/slices/pizzaSliceAsync";
 import { UseDispatch, useDispatch, useSelector } from "react-redux";
-function PizzaItems({ id, title, price, imageUrl, sizes, types, rating }) {
+function PizzaItems({ id, title, price, imageUrl }) {
   const dispatch = useDispatch()
+  const sizes =useSelector(state => state.pizzaList.data.sizes)
+  const types =useSelector(state => state.pizzaList.data.types)
   const sizePizzaState = useSelector(state => state.pizzaList.settings[id].size);
   const typePizzaStete = useSelector(state => state.pizzaList.settings[id].type)
   const setActiveSize = (size) => {
