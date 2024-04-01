@@ -72,12 +72,14 @@ $primary-color: rgb(255, 145, 16);
 }
 
 .promo_info_section {
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .promo_img_section {
+    visibility: hidden;
     position: relative;
 
     .pizza2 {

@@ -4,11 +4,11 @@ import Ecllipse from '../../static/Ellipse 1.png'
 import { Link } from "react-router-dom"
 import ScrollReveal from 'scrollreveal'
 import { useEffect } from "react"
-import { bottom, left, right } from "@popperjs/core"
+
 
 ScrollReveal({
     reset: true,
-    distance: '1000px',
+    distance: '500px',
     duration: 2000,
     delay:200
 })
@@ -23,9 +23,9 @@ const Promo = () => {
             <div className="promo_info_section">
                 <h2 className="title_promo">Meet, Eat & <span>Enjoy</span> The <span>Taste</span></h2>
                 <div className="description_introduction">
-                    <h3 className="info">Food tastes better when you share it with your family and friends.</h3>
+                    <h3 className="info" >Food tastes better when you share it with your family and friends.</h3>
                     <div className="btn_block">
-                        <Link to="/pizzas"  className="Place_Order_btn">Go</Link>
+                        <Link to="/pizzas"  className="Place_Order_btn" >Go</Link>
                         <Link to="/gg" className="Get_Started_btn">?</Link>
                     </div>
                 </div>
