@@ -1,6 +1,6 @@
 import { useDispatch, useSelector, UseSelector } from "react-redux";
 import { selectCartList } from "../../redux/slices/cardSlice";
-import CartItem from "./cartItem.jsx";
+import CartItem from "../CartItem/CartItem.jsx";
 import trash from "../../static/trash.svg"
 import cart from "../../static/card.svg"
 

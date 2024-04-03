@@ -9,8 +9,8 @@ import { useEffect } from "react"
 ScrollReveal({
     reset: true,
     distance: '500px',
-    duration: 2000,
-    delay:200
+    duration: 1000,
+    delay:50
 })
 
 const Promo = () => {
