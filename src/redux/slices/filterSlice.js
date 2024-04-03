@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const filterSlice = createSlice({
-  name: 'filter',
+  name: 'card',
   initialState: {
     activeIndex: 0,
   },

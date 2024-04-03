@@ -24,12 +24,11 @@ export const pizzaListSlice = createSlice({
     name: 'pizzaList',
     initialState: {
         data: {pizzas : [],totalPages :1,currentPg:0},
-        loading: true,
-        error: null,
-        settings: {},
         types: [],
-        sizes: []
-        
+        sizes: [],
+        settings: {},
+        loading: false,
+        error: null, 
     },
     reducers: {
         setCurrentPage: (state, action) => {
@@ -45,7 +44,15 @@ export const pizzaListSlice = createSlice({
             
             state.settings[pizzaId].size = newSize;
         },
-        
+        increase : (state,action)=> {
+            
+            const id = action.payload;
+            state.settings[id].count ++;
+        },
+        decrease : (state,action)=> {
+            const { pizzaId } = action.payload;
+            state.settings[pizzaId].count--;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -76,7 +83,7 @@ export const pizzaListSlice = createSlice({
 });
 
 
-export const { setCurrentPage,setPizzaSize,setPizzaType } = pizzaListSlice.actions;
+export const { setCurrentPage,setPizzaSize,setPizzaType,increase } = pizzaListSlice.actions;
 export const selectPizzas = (state) => state.pizzaList.data.pizzas;
 
 export default pizzaListSlice.reducer;

@@ -1,20 +1,23 @@
 
-
-
-import { useEffect } from "react";
-import { selectPizzaSettings, setPizzaSize, setPizzaType } from "../../redux/slices/pizzaSliceAsync";
-import { UseDispatch, useDispatch, useSelector } from "react-redux";
+import { addPizzaInCard } from "../../redux/slices/cardSlice";
+import { setPizzaSize, setPizzaType,increase } from "../../redux/slices/pizzaSliceAsync";
+import { useDispatch, useSelector } from "react-redux";
 function PizzaItems({ id, title, price, imageUrl }) {
   const dispatch = useDispatch()
-  const sizes =useSelector(state => state.pizzaList.data.sizes)
-  const types =useSelector(state => state.pizzaList.data.types)
+  const count = useSelector(state => state.pizzaList.settings[id].count)
+  const sizes = useSelector(state => state.pizzaList.data.sizes)
+  const types = useSelector(state => state.pizzaList.data.types)
   const sizePizzaState = useSelector(state => state.pizzaList.settings[id].size);
-  const typePizzaStete = useSelector(state => state.pizzaList.settings[id].type)
+  const typePizzaState = useSelector(state => state.pizzaList.settings[id].type)
   const setActiveSize = (size) => {
     dispatch(setPizzaSize({ pizzaId: id, newSize: size }))
   }
   const setActiveType = (type) => {
     dispatch(setPizzaType({ pizzaId: id, newType: type }))
+  }
+  const addInCart = () => {
+    dispatch(increase(id))
+    dispatch(addPizzaInCard({ title, price, imageUrl, sizePizzaState, typePizzaState, id} ))
   }
   return (
     <div className="pizza-block-wrapper">
@@ -27,7 +30,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
               <li
                 key={typeId}
                 onClick={() => setActiveType(typeId)}
-                className={typePizzaStete === typeId ? 'active' : ''}>
+                className={typePizzaState === typeId ? 'active' : ''}>
                 {typeId}
               </li>
             ))}
@@ -57,8 +60,9 @@ function PizzaItems({ id, title, price, imageUrl }) {
                 fill="white"
               />
             </svg>
-            <span>Додати</span>
-            <i>0</i>
+            <span
+              onClick={addInCart}>Додати</span>
+            <i>{count}</i>
           </button>
         </div>
       </div>

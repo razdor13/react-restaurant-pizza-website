@@ -18,7 +18,6 @@ const Sort = () => {
     }
     useEffect (() => {
         const hendlClickOutside = (event)=> {
-            console.log(event.composedPath())
             if (!event.composedPath().includes(sortRef.current)) {
                 setOpen(false)
             }

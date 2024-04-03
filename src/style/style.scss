@@ -125,6 +125,9 @@ body {
         .content__title {
             margin: 0;
         }
+        .content__items {
+            display: block;
+        }
     }
 }
 
@@ -133,25 +136,27 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    .content__title {
-        display: flex;
-        align-items: center;
-        font-size: 32px;
-
-        svg {
-            position: relative;
-            top: -2px;
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            path {
-                stroke: $black;
-                stroke-width: 1.9;
+        .content__title {
+            display: flex;
+            align-items: center;
+            font-size: 32px;
+    
+            img {
+                
+                position: relative;
+                top: -2px;
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+                path {
+                    stroke: $black;
+                    stroke-width: 1.9;
+                }
             }
         }
     }
+
+    
 
     &__clear {
         display: flex;
@@ -184,9 +189,7 @@ body {
         }
     }
 
-    .content__items {
-        display: block;
-    }
+    
 
     &__item {
         display: flex;

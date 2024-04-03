@@ -11,7 +11,6 @@ import Pagination from "../Pagination/index.js"
 const PizzaBlock = () => {
     const dispatch = useDispatch();
     const pizzaList = useSelector(state => state.pizzaList.data.pizzas);
-    
     const search = useSelector(state => state.search)
     const filter = useSelector(state => state.filter)
     const totalPages = useSelector(state => state.pizzaList.data.totalPages)
