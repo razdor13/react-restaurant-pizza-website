@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-const CartItem = ({ title, price, imageUrl, sizePizzaState, typePizzaState, id }) => {
-    
+const CartItem = ({count, title, price, imageUrl, totalIndividualPrice, sizePizzaState, typePizzaState, id ,sectionIdInCart}) => {
+    ;
+    console.log(sectionIdInCart);
+    // Отримуємо об'єкт піци за його id зі стану
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -31,7 +34,7 @@ const CartItem = ({ title, price, imageUrl, sizePizzaState, typePizzaState, id }
                             fill="#EB5A1E"></path>
                     </svg>
                 </div>
-                <b>2</b>
+                <b>{count}</b>
                 <div
                     //   onClick={onClickPlus}
                     className="button button--outline button--circle cart__item-count-plus">
@@ -51,7 +54,7 @@ const CartItem = ({ title, price, imageUrl, sizePizzaState, typePizzaState, id }
                 </div>
             </div>
             <div className="cart__item-price">
-                <b>{price}</b>
+                <b>{totalIndividualPrice}</b>
             </div>
             <div className="cart__item-remove">
                 <div className="button button--outline button--circle">

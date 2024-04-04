@@ -1,6 +1,6 @@
 import "../Footer/Footer.scss"
 import { Link } from "react-router-dom"
-
+import { UseSelector } from "react-redux"
 const Footer = () => {
     return (
         <footer className="footer">

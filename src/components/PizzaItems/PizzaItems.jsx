@@ -17,7 +17,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
   }
   const addInCart = () => {
     dispatch(increase(id))
-    dispatch(addPizzaInCard({ title, price, imageUrl, sizePizzaState, typePizzaState, id} ))
+    dispatch(addPizzaInCard( {id ,title, price, imageUrl, sizePizzaState, typePizzaState} ))
   }
   return (
     <div className="pizza-block-wrapper">
@@ -48,7 +48,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
         </div>
         <div className="pizza-block__bottom">
           <div className="pizza-block__price">от {price} $</div>
-          <button className="button button--outline button--add">
+          <button onClick={addInCart} className="button button--outline button--add">
             <svg
               width="12"
               height="12"
@@ -60,8 +60,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
                 fill="white"
               />
             </svg>
-            <span
-              onClick={addInCart}>Додати</span>
+            <span>Додати</span>
             <i>{count}</i>
           </button>
         </div>

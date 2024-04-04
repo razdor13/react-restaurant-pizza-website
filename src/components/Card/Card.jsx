@@ -1,27 +1,33 @@
-import { useDispatch, useSelector, UseSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCartList } from "../../redux/slices/cardSlice";
+import { removeAllPizzasFromCart } from "../../redux/slices/cardSlice";
+import { decrease,increase ,remove } from "../../redux/slices/pizzaSliceAsync";
 import CartItem from "../CartItem/CartItem.jsx";
 import trash from "../../static/trash.svg"
 import cart from "../../static/card.svg"
-
+import { fetchPizzaList, setCurrentPage } from "../../redux/slices/pizzaSliceAsync.js"
 
 const Cart = () => {
+    
     const dispatch = useDispatch()
     const cartPizzaList = useSelector(selectCartList)
-    console.log(cartPizzaList)
-
+    const totalCount = useSelector(state => state.cart.totalCount)
+    const totalPrice = useSelector(state => state.cart.totalPrice)
     const pizza = cartPizzaList.map((pizza,i) => {
-        console.log(pizza)
-        return <CartItem {...pizza} key={i}   />
+        console.log(pizza.sectionIdInCart)
+        return <CartItem {...pizza} key={pizza.sectionIdInCart}  sectionIdInCart={pizza.sectionIdInCart}  />
     })
-
+    const removePizzas = () => {
+        dispatch(removeAllPizzasFromCart())
+        dispatch(fetchPizzaList())
+    }
     return (
         <div className="container container--cart">
             <div className="cart__top">
                 <h2 className="content__title">
                     <img src={cart} alt="" /> Корзина
                 </h2>
-                <div className="cart__clear">
+                <div onClick={removePizzas} className="cart__clear">
                     <img src={trash} alt="trash" />
                     <span>Очистити кошик</span>
                 </div>
@@ -31,8 +37,8 @@ const Cart = () => {
             </div>
             <div className="cart__bottom">
                 <div className="cart__bottom-details">
-                    <span> Всього : <b>1 шт.</b> </span>
-                    <span> Сума замовлення: <b>1231$</b> </span>
+                    <span> Всього : <b>{totalCount} шт.</b> </span>
+                    <span> Сума замовлення: <b>{totalPrice}$</b> </span>
                 </div>
                 <div className="cart__bottom-buttons">
                     <a className="button button--outline button--add go-back-btn" href="/">
