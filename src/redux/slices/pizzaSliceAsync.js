@@ -8,7 +8,7 @@ import getPizzaBySort from '../../services/PizzaService';
 export const fetchPizzaList = createAsyncThunk(
     'pizzaList/fetch',
     async (arg, thunkAPI) => {
-        const { activeIndex } = thunkAPI.getState().filter;
+        const activeIndex = thunkAPI.getState().filter;
         const { searchValue } = thunkAPI.getState().search;
         const { sortIndex } = thunkAPI.getState().sort; 
         const { currentPg } =thunkAPI.getState().pizzaList.data

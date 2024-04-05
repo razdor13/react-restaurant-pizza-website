@@ -13,11 +13,11 @@ const CartEmpty = () => {
         <p>
           Ймовірно, ви ще не замовляли піцу.
           <br />
-          Для того, щоб замовити піцу, перейдіть на сто
+          Для того, щоб замовити піцу, перейдіть в меню 
         </p>
         <img src={cart} alt="Порожній кошик" />
-        <Link to="/other" className="button button--black">
-          <span>Повернутися назад</span>
+        <Link to="/pizzas" className="button button--black">
+          <span>Хочу їсти !</span>
         </Link>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { removeAllPizzasFromCart } from "../../redux/slices/cardSlice";
 import CartItem from "../CartItem/CartItem.jsx";
 import trash from "../../static/trash.svg"
 import cart from "../../static/card.svg"
+import CartEmpty from "./CardEmpty.jsx";
 import { fetchPizzaList, setCurrentPage } from "../../redux/slices/pizzaSliceAsync.js"
 import { Link } from "react-router-dom";
 
@@ -19,6 +20,9 @@ const Cart = () => {
     const removePizzas = () => {
         dispatch(removeAllPizzasFromCart())
         dispatch(fetchPizzaList())
+    }
+    if(!totalCount) {
+        return <CartEmpty/>
     }
     return (
         <div className="container container--cart">

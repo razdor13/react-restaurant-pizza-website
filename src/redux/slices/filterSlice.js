@@ -1,18 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const filterSlice = createSlice({
-  name: 'card',
-  initialState: {
-    activeIndex: 0,
-  },
+  name: 'filter',
+  initialState: 0,
   reducers: {
-    chengeIndex: (state,action) => {
-      state.activeIndex = action.payload
-    },
+    chengeIndex: (state,action) => action.payload
   },
 })
 
 
 export const { chengeIndex } = filterSlice.actions
-export const selectIndex = (state) => state.filter.activeIndex
+export const selectIndex = (state) => state.filter
 export default filterSlice.reducer
