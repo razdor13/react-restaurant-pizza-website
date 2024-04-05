@@ -4,6 +4,10 @@ import { setPizzaSize, setPizzaType, increasePizzaInMenu } from "../../redux/sli
 import { useDispatch, useSelector } from "react-redux";
 import getTotalCountById from "../../services/getTotalCountById";
 import { useEffect } from "react";
+import "../PizzaItems/PizzaItems.scss"
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
+
 function PizzaItems({ id, title, price, imageUrl }) {
   const dispatch = useDispatch()
   const cartList1 = useSelector(state => state.cart.cardList)
@@ -28,7 +32,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
-        <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+        <LazyLoadImage className="pizza-block__image" src={imageUrl}  effect="blur" alt="Pizza" />
         <h4 className="pizza-block__title">{title}</h4>
         <div className="pizza-block__selector">
           <ul>
