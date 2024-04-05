@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartList } from "../../redux/slices/cardSlice";
 import { removeAllPizzasFromCart } from "../../redux/slices/cardSlice";
-import { decrease,increase ,remove } from "../../redux/slices/pizzaSliceAsync";
 import CartItem from "../CartItem/CartItem.jsx";
 import trash from "../../static/trash.svg"
 import cart from "../../static/card.svg"
 import { fetchPizzaList, setCurrentPage } from "../../redux/slices/pizzaSliceAsync.js"
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     
@@ -14,7 +14,6 @@ const Cart = () => {
     const totalCount = useSelector(state => state.cart.totalCount)
     const totalPrice = useSelector(state => state.cart.totalPrice)
     const pizza = cartPizzaList.map((pizza,i) => {
-        console.log(pizza.sectionIdInCart)
         return <CartItem {...pizza} key={pizza.sectionIdInCart}  sectionIdInCart={pizza.sectionIdInCart}  />
     })
     const removePizzas = () => {
@@ -41,12 +40,12 @@ const Cart = () => {
                     <span> Сума замовлення: <b>{totalPrice}$</b> </span>
                 </div>
                 <div className="cart__bottom-buttons">
-                    <a className="button button--outline button--add go-back-btn" href="/">
+                    <Link className="button button--outline button--add go-back-btn" to={'/pizzas'}>
                         <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                         </svg>
                         <span>Повернутись назад</span>
-                    </a>
+                    </Link>
                     <div className="button pay-btn">
                         <span>Сплатити зараз</span>
                     </div>

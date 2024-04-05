@@ -43,18 +43,12 @@ export const pizzaListSlice = createSlice({
             
             state.settings[pizzaId].size = newSize;
         },
-        increase : (state,action)=> {
-            
-            const id = action.payload;
-            state.settings[id].count ++;
+        increasePizzaInMenu : (state,action)=> {
+            console.log(action.payload)
+            const {total,id} = action.payload   
+            state.settings[id].count = total
+
         },
-        decrease : (state,action)=> {
-            const id = action.payload;
-            state.settings[id].count --;
-        },
-        remove : (state,action) => {
-            Object.values(state.settings).forEach((setting) => setting.count = 0);
-        }
     },
     extraReducers: (builder) => {
         builder
@@ -85,7 +79,7 @@ export const pizzaListSlice = createSlice({
 });
 
 
-export const { setCurrentPage,setPizzaSize,setPizzaType,increase , remove} = pizzaListSlice.actions;
+export const { setCurrentPage,setPizzaSize,setPizzaType,increasePizzaInMenu , decreasePizzaInMenu} = pizzaListSlice.actions;
 export const selectPizzas = (state) => state.pizzaList.data.pizzas;
 
 export default pizzaListSlice.reducer;

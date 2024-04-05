@@ -1,9 +1,13 @@
 
 import { addPizzaInCard } from "../../redux/slices/cardSlice";
-import { setPizzaSize, setPizzaType,increase } from "../../redux/slices/pizzaSliceAsync";
+import { setPizzaSize, setPizzaType, increasePizzaInMenu } from "../../redux/slices/pizzaSliceAsync";
 import { useDispatch, useSelector } from "react-redux";
+import getTotalCountById from "../../services/getTotalCountById";
+import { useEffect } from "react";
 function PizzaItems({ id, title, price, imageUrl }) {
   const dispatch = useDispatch()
+  const cartList1 = useSelector(state => state.cart.cardList)
+  const totalCount = useSelector(state => state.cart.totalCount)
   const count = useSelector(state => state.pizzaList.settings[id].count)
   const sizes = useSelector(state => state.pizzaList.data.sizes)
   const types = useSelector(state => state.pizzaList.data.types)
@@ -16,9 +20,11 @@ function PizzaItems({ id, title, price, imageUrl }) {
     dispatch(setPizzaType({ pizzaId: id, newType: type }))
   }
   const addInCart = () => {
-    dispatch(increase(id))
-    dispatch(addPizzaInCard( {id ,title, price, imageUrl, sizePizzaState, typePizzaState} ))
+    dispatch(addPizzaInCard({ id, title, price, imageUrl, sizePizzaState, typePizzaState })); // Оновити count після додавання піци
   }
+  useEffect(() => {
+    dispatch(increasePizzaInMenu( getTotalCountById(cartList1, id)));
+  },[totalCount])
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
@@ -47,7 +53,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
           </ul>
         </div>
         <div className="pizza-block__bottom">
-          <div className="pizza-block__price">от {price} $</div>
+          <div className="pizza-block__price">{price} $</div>
           <button onClick={addInCart} className="button button--outline button--add">
             <svg
               width="12"

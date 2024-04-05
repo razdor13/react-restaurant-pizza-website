@@ -12,7 +12,9 @@ $primary-color: rgb(255, 145, 16);
     text-align: left;
     width: 400px; /* Збільшуємо ширину */
     height: 250px; /* Збільшуємо висоту */
-
+    margin-left: 0;
+        
+    
     span {
         color: $primary-color;
     }

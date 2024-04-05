@@ -14,10 +14,11 @@
         line-height: 1.5;
         margin-bottom: 10px;
     }
+    h2 {
+        margin-left: 20px;
+    }
 }
-h2 {
-    margin-left: 20px;
-}
+
 
 .Nav {
     margin-left: 20px;
@@ -25,5 +26,5 @@ h2 {
 }
 
 .active {
-    color: orangered;
+    color:#27ae60;
 }

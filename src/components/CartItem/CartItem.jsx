@@ -1,10 +1,18 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
+import { useSelector ,useDispatch} from 'react-redux'
+import { increaseCountPizzaSectionInCart,decreaseCountPizzaSectionInCart,removePizzaFromCart} from '../../redux/slices/cardSlice'
+import { increasePizzaInMenu,decreasePizzaInMenu } from '../../redux/slices/pizzaSliceAsync'
 const CartItem = ({count, title, price, imageUrl, totalIndividualPrice, sizePizzaState, typePizzaState, id ,sectionIdInCart}) => {
-    ;
-    console.log(sectionIdInCart);
-    // Отримуємо об'єкт піци за його id зі стану
+    const dispatch = useDispatch()
+    const onClickMinus = () => {
+        dispatch(decreaseCountPizzaSectionInCart(sectionIdInCart))
+    }
+    const onClickPlus = () => {
+        dispatch(increaseCountPizzaSectionInCart(sectionIdInCart))
+    }
+    const onClickRemovePizza = () => {
+        dispatch(removePizzaFromCart(sectionIdInCart))
+    }
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -18,7 +26,7 @@ const CartItem = ({count, title, price, imageUrl, totalIndividualPrice, sizePizz
             </div>
             <div className="cart__item-count">
                 <div
-                    //   onClick={onClickMinus}
+                    onClick={onClickMinus}
                     className="button button--outline button--circle cart__item-count-minus">
                     <svg
                         width="10"
@@ -36,7 +44,7 @@ const CartItem = ({count, title, price, imageUrl, totalIndividualPrice, sizePizz
                 </div>
                 <b>{count}</b>
                 <div
-                    //   onClick={onClickPlus}
+                    onClick={onClickPlus}
                     className="button button--outline button--circle cart__item-count-plus">
                     <svg
                         width="10"
@@ -56,7 +64,7 @@ const CartItem = ({count, title, price, imageUrl, totalIndividualPrice, sizePizz
             <div className="cart__item-price">
                 <b>{totalIndividualPrice}</b>
             </div>
-            <div className="cart__item-remove">
+            <div className="cart__item-remove" onClick={onClickRemovePizza}>
                 <div className="button button--outline button--circle">
                     <svg
                         width="10"

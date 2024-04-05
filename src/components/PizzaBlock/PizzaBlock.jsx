@@ -18,7 +18,7 @@ const PizzaBlock = () => {
     const loading = useSelector(state => state.pizzaList.loading)
     const error = useSelector(state => state.pizzaList.error)
     const sort = useSelector(state => state.sort)
-
+    console.log('perevm')
     useEffect(() => {
         dispatch(fetchPizzaList());
     }, [search, sort, filter, currentPage]);
