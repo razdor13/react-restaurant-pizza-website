@@ -67,7 +67,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
               />
             </svg>
             <span>Додати</span>
-            <i>{count}</i>
+            {count === 0 ?null :  <i>{count}</i>}
           </button>
         </div>
       </div>
