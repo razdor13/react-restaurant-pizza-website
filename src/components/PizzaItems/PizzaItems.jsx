@@ -32,7 +32,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
-        <LazyLoadImage className="pizza-block__image" src={imageUrl}  effect="blur" alt="Pizza" />
+        <LazyLoadImage className="pizza-block__image" src={imageUrl} height={260} effect="blur" alt="Pizza" />
         <h4 className="pizza-block__title">{title}</h4>
         <div className="pizza-block__selector">
           <ul>
