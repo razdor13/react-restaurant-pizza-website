@@ -1,5 +1,5 @@
 
-import { addPizzaInCard } from "../../redux/slices/cardSlice";
+import { addPizzaInCart } from "../../redux/slices/cartSlice";
 import { setPizzaSize, setPizzaType, increasePizzaInMenu } from "../../redux/slices/pizzaSliceAsync";
 import { useDispatch, useSelector } from "react-redux";
 import getTotalCountById from "../../services/getTotalCountById";
@@ -10,7 +10,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 
 function PizzaItems({ id, title, price, imageUrl }) {
   const dispatch = useDispatch()
-  const cartList1 = useSelector(state => state.cart.cardList)
+  const cartList = useSelector(state => state.cart.cartList)
   const totalCount = useSelector(state => state.cart.totalCount)
   const count = useSelector(state => state.pizzaList.settings[id].count)
   const sizes = useSelector(state => state.pizzaList.data.sizes)
@@ -24,10 +24,10 @@ function PizzaItems({ id, title, price, imageUrl }) {
     dispatch(setPizzaType({ pizzaId: id, newType: type }))
   }
   const addInCart = () => {
-    dispatch(addPizzaInCard({ id, title, price, imageUrl, sizePizzaState, typePizzaState })); // Оновити count після додавання піци
+     dispatch(addPizzaInCart({ id, title, price, imageUrl, sizePizzaState, typePizzaState })); // Оновити count після додавання піци
   }
   useEffect(() => {
-    dispatch(increasePizzaInMenu( getTotalCountById(cartList1, id)));
+    dispatch(increasePizzaInMenu(getTotalCountById(cartList, id)));
   },[totalCount])
   return (
     <div className="pizza-block-wrapper">

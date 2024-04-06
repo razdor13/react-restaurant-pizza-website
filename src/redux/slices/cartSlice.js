@@ -1,19 +1,18 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {increase} from "./pizzaSliceAsync";
 
 export const cartSlice = createSlice({
     name: "cart",
     initialState: {
         totalPrice: 0,
         totalCount: 0,
-        cardList: [],
+        cartList: [],
     },
     reducers: {
-        addPizzaInCard: (state, action) => {
+        addPizzaInCart: (state, action) => {
             const {id, typePizzaState, sizePizzaState, price} = action.payload;
             const sectionIdInCart = `${id}${typePizzaState}${sizePizzaState}`;
 
-            const existingPizza = state.cardList.find(
+            const existingPizza = state.cartList.find(
                 (pizza) => pizza.sectionIdInCart === sectionIdInCart
             );
 
@@ -24,29 +23,29 @@ export const cartSlice = createSlice({
                     existingPizza.count * existingPizza.price;
             } else {
                 // Якщо піци з відповідним sectionIdInCart немає в кошику, додаємо нову піцу
-                state.cardList.push({
+                state.cartList.push({
                     ...action.payload,
                     sectionIdInCart,
                     count: 1,
                     totalIndividualPrice: price,
                 });
             }
-            state.totalCount = state.cardList.reduce(
+            state.totalCount = state.cartList.reduce(
                 (total, pizza) => total + pizza.count,
                 0
             );
-            state.totalPrice = state.cardList.reduce(
+            state.totalPrice = state.cartList.reduce(
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
         },
         removeAllPizzasFromCart: (state, action) => {
-            state.cardList = [];
-            state.totalCount = state.cardList.reduce(
+            state.cartList = [];
+            state.totalCount = state.cartList.reduce(
                 (total, pizza) => total + pizza.count,
                 0
             );
-            state.totalPrice = state.cardList.reduce(
+            state.totalPrice = state.cartList.reduce(
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
@@ -55,7 +54,7 @@ export const cartSlice = createSlice({
             const sectionIdToDecrease = action.payload;
 
             // Знаходимо піцу за sectionIdInCart
-            const pizzaToDecrease = state.cardList.find(
+            const pizzaToDecrease = state.cartList.find(
                 (pizza) => pizza.sectionIdInCart === sectionIdToDecrease
             );
             console.log(pizzaToDecrease.count);
@@ -64,11 +63,11 @@ export const cartSlice = createSlice({
                 pizzaToDecrease.totalIndividualPrice =
                     pizzaToDecrease.count * pizzaToDecrease.price; // Оновлюємо ціну за кількість
             }
-            state.totalCount = state.cardList.reduce(
+            state.totalCount = state.cartList.reduce(
                 (total, pizza) => total + pizza.count,
                 0
             );
-            state.totalPrice = state.cardList.reduce(
+            state.totalPrice = state.cartList.reduce(
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
@@ -77,7 +76,7 @@ export const cartSlice = createSlice({
             const sectionIdToIncrease = action.payload;
 
             // Знаходимо піцу за sectionIdInCart
-            const pizzaToIncrease = state.cardList.find(
+            const pizzaToIncrease = state.cartList.find(
                 (pizza) => pizza.sectionIdInCart === sectionIdToIncrease
             );
 
@@ -89,11 +88,11 @@ export const cartSlice = createSlice({
             }
 
             // Перераховуємо загальну кількість та ціну всього кошика
-            state.totalCount = state.cardList.reduce(
+            state.totalCount = state.cartList.reduce(
                 (total, pizza) => total + pizza.count,
                 0
             );
-            state.totalPrice = state.cardList.reduce(
+            state.totalPrice = state.cartList.reduce(
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
@@ -102,24 +101,24 @@ export const cartSlice = createSlice({
             const sectionIdToRemove = action.payload;
         
             // Знаходимо піцу, яку потрібно видалити зі списку
-            const pizzaToRemove = state.cardList.find(
+            const pizzaToRemove = state.cartList.find(
                 (pizza) => pizza.sectionIdInCart === sectionIdToRemove
             );
         
             // Перевіряємо чи знайшли піцу, щоб видалити її зі списку
             if (pizzaToRemove) {
                 // Видаляємо піцу зі списку
-                state.cardList = state.cardList.filter(
+                state.cartList = state.cartList.filter(
                     (pizza) => pizza.sectionIdInCart !== sectionIdToRemove
                 );
             }
         
             // Перераховуємо загальну кількість та ціну всього кошика
-            state.totalCount = state.cardList.reduce(
+            state.totalCount = state.cartList.reduce(
                 (total, pizza) => total + pizza.count,
                 0
             );
-            state.totalPrice = state.cardList.reduce(
+            state.totalPrice = state.cartList.reduce(
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
@@ -128,12 +127,12 @@ export const cartSlice = createSlice({
 });
 
 export const {
-    addPizzaInCard,
+    addPizzaInCart,
     removeAllPizzasFromCart,
     increaseCountPizzaSectionInCart,
     decreaseCountPizzaSectionInCart,
     removePizzaFromCart
 } = cartSlice.actions;
-export const selectPrice = (state) => state.card.totalPrice;
-export const selectCartList = (state) => state.cart.cardList;
+export const selectPrice = (state) => state.cart.totalPrice;
+export const selectCartList = (state) => state.cart.cartList;
 export default cartSlice.reducer;

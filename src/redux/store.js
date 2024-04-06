@@ -4,7 +4,7 @@ import sortSlice from './slices/sortSlice'
 import searchSlice from './slices/searchSlice'
 import pizzaListSlice from './slices/pizzaSliceAsync.js'
 import logger from 'redux-logger'
-import cardSlice from './slices/cardSlice.js'
+import cartSlice from './slices/cartSlice.js'
 
 
 
@@ -14,7 +14,7 @@ export default configureStore({
     sort : sortSlice,
     search : searchSlice,
     pizzaList: pizzaListSlice,
-    cart:cardSlice
+    cart: cartSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 })
