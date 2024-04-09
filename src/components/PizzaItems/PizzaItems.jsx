@@ -1,5 +1,5 @@
 
-import { addPizzaInCart } from "../../redux/slices/cartSlice";
+import { addPizzaInCart } from "../../redux/slices/pizzaSliceAsync";
 import { setPizzaSize, setPizzaType, increasePizzaInMenu } from "../../redux/slices/pizzaSliceAsync";
 import { useDispatch, useSelector } from "react-redux";
 import getTotalCountById from "../../services/getTotalCountById";
@@ -10,12 +10,12 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 
 function PizzaItems({ id, title, price, imageUrl }) {
   const dispatch = useDispatch()
-  const cartList = useSelector(state => state.cart.cartList)
-  const totalCount = useSelector(state => state.cart.totalCount)
+  const cartList = useSelector(state => state.pizzaList.cartList)
+  const totalCount = useSelector(state => state.pizzaList.totalCount)
   const count = useSelector(state => state.pizzaList.settings[id].count)
   const sizes = useSelector(state => state.pizzaList.data.sizes)
   const types = useSelector(state => state.pizzaList.data.types)
-  const sizePizzaState = useSelector(state => state.pizzaList.settings[id].size);
+  const sizePizzaState = useSelector(state => state.pizzaList.settings[id].size)
   const typePizzaState = useSelector(state => state.pizzaList.settings[id].type)
   const setActiveSize = (size) => {
     dispatch(setPizzaSize({ pizzaId: id, newSize: size }))

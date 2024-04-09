@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectCartList } from "../../redux/slices/cartSlice.js";
-import { removeAllPizzasFromCart } from "../../redux/slices/cartSlice.js";
+import { selectCartList } from "../../redux/slices/pizzaSliceAsync.js";
+import { removeAllPizzasFromCart } from "../../redux/slices/pizzaSliceAsync.js";
 import CartItem from "../CartItem/CartItem.jsx";
 import trash from "../../static/trash.svg"
 import cart from "../../static/card.svg"
@@ -12,14 +12,13 @@ const Cart = () => {
     
     const dispatch = useDispatch()
     const cartPizzaList = useSelector(selectCartList)
-    const totalCount = useSelector(state => state.cart.totalCount)
-    const totalPrice = useSelector(state => state.cart.totalPrice)
+    const totalCount = useSelector(state => state.pizzaList.totalCount)
+    const totalPrice = useSelector(state => state.pizzaList.totalPrice)
     const pizza = cartPizzaList.map((pizza,i) => {
         return <CartItem {...pizza} key={pizza.sectionIdInCart}  sectionIdInCart={pizza.sectionIdInCart}  />
     })
     const removePizzas = () => {
         dispatch(removeAllPizzasFromCart())
-        dispatch(fetchPizzaList())
     }
     if(!totalCount) {
         return <CartEmpty/>

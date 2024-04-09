@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector ,useDispatch} from 'react-redux'
-import { increaseCountPizzaSectionInCart,decreaseCountPizzaSectionInCart,removePizzaFromCart} from '../../redux/slices/cartSlice'
-import { increasePizzaInMenu,decreasePizzaInMenu } from '../../redux/slices/pizzaSliceAsync'
+
+import { decreaseCountPizzaSectionInCart,increaseCountPizzaSectionInCart, removePizzaFromCart } from '../../redux/slices/pizzaSliceAsync'
 const CartItem = ({count, title, price, imageUrl, totalIndividualPrice, sizePizzaState, typePizzaState, id ,sectionIdInCart}) => {
     const dispatch = useDispatch()
     const onClickMinus = () => {

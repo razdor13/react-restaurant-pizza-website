@@ -4,8 +4,8 @@ import { Link,useLocation  } from "react-router-dom"
 import Search from "../Search"
 import {  useSelector } from "react-redux"
 const Header = () => {
-    const totalCount = useSelector(state => state.cart.totalCount)
-    const totalPrice = useSelector(state => state.cart.totalPrice)
+    const totalCount = useSelector(state => state.pizzaList.totalCount)
+    const totalPrice = useSelector(state => state.pizzaList.totalPrice)
     const location = useLocation();
     const showSearch = location.pathname === '/pizzas';
     return (
