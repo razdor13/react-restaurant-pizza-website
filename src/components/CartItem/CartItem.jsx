@@ -11,7 +11,7 @@ const CartItem = ({count, title, price, imageUrl, totalIndividualPrice, sizePizz
         dispatch(increaseCountPizzaSectionInCart(sectionIdInCart))
     }
     const onClickRemovePizza = () => {
-        dispatch(removePizzaFromCart(sectionIdInCart))
+        dispatch(removePizzaFromCart({sectionIdInCart,id}))
     }
     return (
         <div className="cart__item">

@@ -174,18 +174,18 @@ export const pizzaListSlice = createSlice({
             );
         },
         removePizzaFromCart: (state, action) => {
-            const sectionIdToRemove = action.payload;
-
+            const {sectionIdInCart,id} = action.payload;
+            console.log(sectionIdInCart, id)
             // Знаходимо піцу, яку потрібно видалити зі списку
             const pizzaToRemove = state.cartList.find(
-                (pizza) => pizza.sectionIdInCart === sectionIdToRemove
+                (pizza) => pizza.sectionIdInCart === sectionIdInCart
             );
 
             // Перевіряємо чи знайшли піцу, щоб видалити її зі списку
             if (pizzaToRemove) {
                 // Видаляємо піцу зі списку
                 state.cartList = state.cartList.filter(
-                    (pizza) => pizza.sectionIdInCart !== sectionIdToRemove
+                    (pizza) => pizza.sectionIdInCart !== sectionIdInCart
                 );
             }
 
@@ -198,7 +198,8 @@ export const pizzaListSlice = createSlice({
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
-            state.settings
+            
+            state.settings[id].count = 0
         },
     },
     extraReducers: (builder) => {
