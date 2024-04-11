@@ -122,7 +122,7 @@ export const pizzaListSlice = createSlice({
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
-            state.settings.forEach(item => {
+            state.settings.forEach((item) => {
                 item.count = 0;
             });
         },
@@ -174,8 +174,8 @@ export const pizzaListSlice = createSlice({
             );
         },
         removePizzaFromCart: (state, action) => {
-            const {sectionIdInCart,id} = action.payload;
-            console.log(sectionIdInCart, id)
+            const {sectionIdInCart, id} = action.payload;
+            console.log(sectionIdInCart, id);
             // Знаходимо піцу, яку потрібно видалити зі списку
             const pizzaToRemove = state.cartList.find(
                 (pizza) => pizza.sectionIdInCart === sectionIdInCart
@@ -198,8 +198,13 @@ export const pizzaListSlice = createSlice({
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
-            
-            state.settings[id].count = 0
+
+            // state.settings[id].count = state.cartList.
+            const totalCountForId = state.cartList
+                .filter((pizza) => pizza.id === id)
+                .reduce((total, pizza) => total + pizza.count, 0);
+            state.settings[id].count = totalCountForId;
+            console.log(totalCountForId)
         },
     },
     extraReducers: (builder) => {
@@ -240,7 +245,7 @@ export const {
     removeAllPizzasFromCart,
     increaseCountPizzaSectionInCart,
     decreaseCountPizzaSectionInCart,
-    removePizzaFromCart
+    removePizzaFromCart,
 } = pizzaListSlice.actions;
 export const selectPizzas = (state) => state.pizzaList.data.pizzas;
 export const selectPrice = (state) => state.pizzaList.totalPrice;
