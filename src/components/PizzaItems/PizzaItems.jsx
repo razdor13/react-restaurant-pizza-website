@@ -1,9 +1,7 @@
 
 import { addPizzaInCart } from "../../redux/slices/pizzaSliceAsync";
-import { setPizzaSize, setPizzaType, increasePizzaInMenu } from "../../redux/slices/pizzaSliceAsync";
+import { setPizzaSize, setPizzaType } from "../../redux/slices/pizzaSliceAsync";
 import { useDispatch, useSelector } from "react-redux";
-import getTotalCountById from "../../services/getTotalCountById";
-import { useEffect } from "react";
 import "../PizzaItems/PizzaItems.scss"
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
@@ -26,9 +24,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
   const addInCart = () => {
      dispatch(addPizzaInCart({ id, title, price, imageUrl, sizePizzaState, typePizzaState })); // Оновити count після додавання піци
   }
-  useEffect(() => {
-    dispatch(increasePizzaInMenu(getTotalCountById(cartList, id)));
-  },[totalCount])
+  
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
@@ -71,7 +67,7 @@ function PizzaItems({ id, title, price, imageUrl }) {
               />
             </svg>
             <span>Додати</span>
-            {count === 0 ?null :  <i>{count}</i>}
+            {count === 0 ?null : <i>{count}</i>}
           </button>
         </div>
       </div>

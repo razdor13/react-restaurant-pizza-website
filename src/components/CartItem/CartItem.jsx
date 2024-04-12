@@ -5,10 +5,10 @@ import { decreaseCountPizzaSectionInCart,increaseCountPizzaSectionInCart, remove
 const CartItem = ({count, title, price, imageUrl, totalIndividualPrice, sizePizzaState, typePizzaState, id ,sectionIdInCart}) => {
     const dispatch = useDispatch()
     const onClickMinus = () => {
-        dispatch(decreaseCountPizzaSectionInCart(sectionIdInCart))
+        dispatch(decreaseCountPizzaSectionInCart({sectionIdInCart,id}))
     }
     const onClickPlus = () => {
-        dispatch(increaseCountPizzaSectionInCart(sectionIdInCart))
+        dispatch(increaseCountPizzaSectionInCart({sectionIdInCart,id}))
     }
     const onClickRemovePizza = () => {
         dispatch(removePizzaFromCart({sectionIdInCart,id}))

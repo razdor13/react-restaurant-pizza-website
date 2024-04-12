@@ -14,12 +14,12 @@ const Cart = () => {
     const cartPizzaList = useSelector(selectCartList)
     const totalCount = useSelector(state => state.pizzaList.totalCount)
     const totalPrice = useSelector(state => state.pizzaList.totalPrice)
-    const pizza = cartPizzaList.map((pizza,i) => {
-        return <CartItem {...pizza} key={pizza.sectionIdInCart}  sectionIdInCart={pizza.sectionIdInCart}  />
-    })
     const removePizzas = () => {
         dispatch(removeAllPizzasFromCart())
     }
+    const pizza = cartPizzaList.map((pizza,i) => {
+        return <CartItem {...pizza} key={pizza.sectionIdInCart}  sectionIdInCart={pizza.sectionIdInCart}  />
+    })
     if(!totalCount) {
         return <CartEmpty/>
     }
