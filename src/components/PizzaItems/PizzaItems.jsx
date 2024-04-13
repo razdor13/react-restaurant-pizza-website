@@ -8,8 +8,6 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 
 function PizzaItems({ id, title, price, imageUrl }) {
   const dispatch = useDispatch()
-  const cartList = useSelector(state => state.pizzaList.cartList)
-  const totalCount = useSelector(state => state.pizzaList.totalCount)
   const count = useSelector(state => state.pizzaList.settings[id].count)
   const sizes = useSelector(state => state.pizzaList.data.sizes)
   const types = useSelector(state => state.pizzaList.data.types)

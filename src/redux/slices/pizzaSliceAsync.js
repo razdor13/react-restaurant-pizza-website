@@ -46,18 +46,27 @@ export const pizzaListSlice = createSlice({
             state.settings[pizzaId].size = newSize;
         },
         addPizzaInCart: (state, action) => {
-            const {id, typePizzaState, sizePizzaState, price} = action.payload;
+            const { id, typePizzaState, sizePizzaState, price } = action.payload;
             const sectionIdInCart = `${id}${typePizzaState}${sizePizzaState}`;
-
+        
             const existingPizza = state.cartList.find(
                 (pizza) => pizza.sectionIdInCart === sectionIdInCart
             );
-
+        
             if (existingPizza) {
                 // Якщо піца з відповідним sectionIdInCart вже є в кошику, збільшуємо лічильник
-                existingPizza.count += 1;
-                existingPizza.totalIndividualPrice =
-                    existingPizza.count * existingPizza.price;
+                state.cartList = state.cartList.map((pizza) =>
+                    pizza.sectionIdInCart === sectionIdInCart
+                        ? {
+                            ...pizza,
+                            count: pizza.count + 1,
+                            totalIndividualPrice: (pizza.count + 1) * pizza.price,
+                        }
+                        : pizza
+                );
+                state.totalCount += 1;
+                state.totalPrice += price;
+                state.settings[id].count += 1;
             } else {
                 // Якщо піци з відповідним sectionIdInCart немає в кошику, додаємо нову піцу
                 state.cartList.push({
@@ -66,16 +75,10 @@ export const pizzaListSlice = createSlice({
                     count: 1,
                     totalIndividualPrice: price,
                 });
+                state.totalCount += 1;
+                state.totalPrice += price;
+                state.settings[id].count += 1;
             }
-            state.totalCount = state.cartList.reduce(
-                (total, pizza) => total + pizza.count,
-                0
-            );
-            state.totalPrice = state.cartList.reduce(
-                (total, pizza) => total + pizza.price * pizza.count,
-                0
-            );
-            state.settings[id].count++;
         },
         removeAllPizzasFromCart: (state, action) => {
             state.cartList = [];
@@ -112,7 +115,7 @@ export const pizzaListSlice = createSlice({
                 (total, pizza) => total + pizza.price * pizza.count,
                 0
             );
-            state.settings[id].count > 1 && state.settings[id].count --
+            state.settings[id].count > state.cartList.length && state.settings[id].count --
         },
         increaseCountPizzaSectionInCart: (state, action) => {
             const {sectionIdInCart, id} = action.payload;
