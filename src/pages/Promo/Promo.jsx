@@ -1,4 +1,4 @@
-import "../Promo/Promo.scss"
+import "./Promo.scss"
 import pizzaPromo from '../../static/pizza2 (2).png'
 import Ecllipse from '../../static/Ellipse 1.png'
 import { Link } from "react-router-dom"

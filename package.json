@@ -54,7 +54,6 @@
     "react-router-dom": "^6.22.3",
     "redux-logger": "^3.0.6",
     "scrollreveal": "^4.0.9",
-    "url": "^0.11.3",
-    "ws": "^8.16.0"
+    "url": "^0.11.3"
   }
 }

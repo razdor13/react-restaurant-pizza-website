@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartList } from "../../redux/slices/pizzaSliceAsync.js";
 import { removeAllPizzasFromCart } from "../../redux/slices/pizzaSliceAsync.js";
-import CartItem from "../CartItem/CartItem.jsx";
+import CartItem from "../../components/CartItem/CartItem.jsx";
 import trash from "../../static/trash.svg"
 import cart from "../../static/card.svg"
 import CartEmpty from "./CardEmpty.jsx";
-import { fetchPizzaList, setCurrentPage } from "../../redux/slices/pizzaSliceAsync.js"
 import { Link } from "react-router-dom";
 
 const Cart = () => {

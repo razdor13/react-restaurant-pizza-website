@@ -1,12 +1,12 @@
-import "../PizzaBlock/PizzaBlock.scss"
+import "./PizzaBlock.scss"
 import { useEffect } from "react"
-import PizzaItems from "../PizzaItems/PizzaItems.jsx"
-import Categories from "../Categories/Categories.jsx"
-import Sort from "../Sort/Sort.jsx"
+import PizzaItems from "../../components/PizzaItems/PizzaItems.jsx"
+import Categories from "../../components/Categories/Categories.jsx"
+import Sort from "../../components/Sort/Sort.jsx"
 import { Skeleton } from "./Skeleton.jsx"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPizzaList, setCurrentPage } from "../../redux/slices/pizzaSliceAsync.js"
-import Pagination from "../Pagination/index.js"
+import Pagination from "../../components/Pagination/index.js"
 
 const PizzaBlock = () => {
     const dispatch = useDispatch();
