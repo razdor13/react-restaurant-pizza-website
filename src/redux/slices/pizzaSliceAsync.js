@@ -96,26 +96,26 @@ export const pizzaListSlice = createSlice({
         },
         decreaseCountPizzaSectionInCart: (state, action) => {
             const {sectionIdInCart, id} = action.payload;
-
+        
             // Знаходимо піцу за sectionIdInCart
             const pizzaToDecrease = state.cartList.find(
                 (pizza) => pizza.sectionIdInCart === sectionIdInCart
             );
-            console.log(pizzaToDecrease.count);
+        
+            // Якщо знайдено піцу і її кількість більше одиниці, зменшуємо кількість на одиницю
             if (pizzaToDecrease && pizzaToDecrease.count > 1) {
-                pizzaToDecrease.count --; // Зменшуємо кількість на одиницю
-                pizzaToDecrease.totalIndividualPrice =
-                    pizzaToDecrease.count * pizzaToDecrease.price; // Оновлюємо ціну за кількість
+                pizzaToDecrease.count--; 
+                pizzaToDecrease.totalIndividualPrice = pizzaToDecrease.count * pizzaToDecrease.price;
             }
-            state.totalCount = state.cartList.reduce(
-                (total, pizza) => total + pizza.count,
-                0
-            );
-            state.totalPrice = state.cartList.reduce(
-                (total, pizza) => total + pizza.price * pizza.count,
-                0
-            );
-            state.settings[id].count > state.cartList.length && state.settings[id].count --
+        
+            // Обчислюємо загальну кількість піц та їхня загальна ціна в кошику
+            state.totalCount = state.cartList.reduce((total, pizza) => total + pizza.count, 0);
+            state.totalPrice = state.cartList.reduce((total, pizza) => total + pizza.price * pizza.count, 0);
+        
+            // Обчислюємо кількість піц за певним id
+            const countById = state.cartList.filter((pizza) => pizza.id === id).length;
+            // Якщо кількість піц за певним id у стані більше, ніж в кошику, зменшуємо кількість на одиницю
+            state.settings[id].count > countById && state.settings[id].count--;
         },
         increaseCountPizzaSectionInCart: (state, action) => {
             const {sectionIdInCart, id} = action.payload;
